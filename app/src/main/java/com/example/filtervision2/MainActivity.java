@@ -10,76 +10,45 @@ import android.graphics.PorterDuff;
 import androidx.appcompat.widget.SwitchCompat;
 
 public class MainActivity extends AppCompatActivity {
-//    private Button red = findViewById(R.id.red);
-//    private Button default_ = findViewById(R.id.default_);
-//    private ImageView mountains = findViewById(R.id.mountains);
+    SwitchCompat red;
+    SwitchCompat def;
+    SwitchCompat cust1;
+    SwitchCompat cust2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        red = findViewById(R.id.red_switch);
+        def = findViewById(R.id.default_switch);
+        cust1 = findViewById(R.id.custom_switch1);
+        cust2 = findViewById(R.id.custom_switch2);
     }
 
-//    public void onClick(View view) { // called from activity_main.xml
-//        switch(view.getId()) {
-//            case R.id.red:
-//                break;
-//            case R.id.default_:
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-
-//    public void turnRed() {
-//        ImageView mountains = findViewById(R.id.mountains);
-//        mountains.getDrawable().setColorFilter(0xffff7276, PorterDuff.Mode.MULTIPLY);
-//    }
-//
-//    public void reset() {
-//        ImageView mountains = findViewById(R.id.mountains);
-//        mountains.clearColorFilter();
-//    }
-
     public void selectDefault(View view) {
-        SwitchCompat red = findViewById(R.id.red_switch);
-        SwitchCompat cust1 = findViewById(R.id.custom_switch1);
-        SwitchCompat cust2 = findViewById(R.id.custom_switch2);
         red.setChecked(false);
         cust1.setChecked(false);
         cust2.setChecked(false);
     }
 
     public void selectRed(View view) {
-        SwitchCompat def = findViewById(R.id.default_switch);
-        SwitchCompat cust1 = findViewById(R.id.custom_switch1);
-        SwitchCompat cust2 = findViewById(R.id.custom_switch2);
         def.setChecked(false);
         cust1.setChecked(false);
         cust2.setChecked(false);
     }
     public void selectCustom1(View view) {
-        SwitchCompat red = findViewById(R.id.red_switch);
-        SwitchCompat def = findViewById(R.id.default_switch);
-        SwitchCompat cust2 = findViewById(R.id.custom_switch2);
         red.setChecked(false);
         def.setChecked(false);
         cust2.setChecked(false);
     }
 
     public void selectCustom2(View view) {
-        SwitchCompat def = findViewById(R.id.default_switch);
-        SwitchCompat red = findViewById(R.id.red_switch);
-        SwitchCompat cust1 = findViewById(R.id.custom_switch1);
         def.setChecked(false);
         cust1.setChecked(false);
         red.setChecked(false);
     }
 
     public void applyFilter(View view) {
-        SwitchCompat red = findViewById(R.id.red_switch);
-        SwitchCompat def = findViewById(R.id.default_switch);
-        SwitchCompat cust1 = findViewById(R.id.custom_switch1);
-        SwitchCompat cust2 = findViewById(R.id.custom_switch2);
         ImageView mountains = findViewById(R.id.image);
         if (red.isChecked()) {
             mountains.getDrawable().setColorFilter(0xffff7276, PorterDuff.Mode.MULTIPLY);
