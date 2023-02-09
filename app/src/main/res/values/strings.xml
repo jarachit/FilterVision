@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FIlterVision2</string>
+    <string name="red_switch">Red</string>
+    <string name="default_switch">Default</string>
+    <string name="mountains_content_description">Mountains</string>
+    <string name="apply_filter">Apply Filter</string>
 </resources>

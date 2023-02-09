@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="default_filters">
+        <item>Default</item>
+        <item>Deuteranopia</item>
+        <item>Protanopia</item>
+        <item>Tritanopia</item>
+        <item>Gray-Scale</item>
+    </string-array>
+
+    <string-array name="default_values">
+        <item>default_filter</item>
+        <item>deuteranopia</item>
+        <item>protanopia</item>
+        <item>tritanopia</item>
+        <item>gray-scale</item>
+    </string-array>
+
+</resources>
