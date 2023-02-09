@@ -3,5 +3,14 @@
     <string name="red_switch">Red</string>
     <string name="default_switch">Default</string>
     <string name="mountains_content_description">Mountains</string>
+    <string name="palm_tree_content_description">Palm Tree</string>
     <string name="apply_filter">Apply Filter</string>
+    <string name="default_filters">Default Filters</string>
+    <string name="custom_filters">Custom Filters</string>
+    <string name="custom_switch1">Purple</string>
+    <string name="custom_switch2">Teal</string>
+    <string name="select_image">Select Image</string>
+    <string name="image1">Palm Tree</string>
+    <string name="image2">Mountains</string>
+    <string name="apply_image">Apply Image</string>
 </resources>

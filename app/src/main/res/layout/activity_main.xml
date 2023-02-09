@@ -1,40 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/red_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/red_switch"
-        android:onClick="selectRed"/>
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/default_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/default_switch"
-        android:onClick="selectDefault"/>
-
-    <Button
-        android:id="@+id/button"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/apply_filter"
-        android:onClick="applyFilter"/>
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/mountains"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/mountains_content_description"
-        app:srcCompat="@drawable/mountains" />
+        <TextView
+            android:id="@+id/default_filters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/default_filters"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toTopOf="@+id/red_switch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/red_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectRed"
+            android:text="@string/red_switch"
+            app:layout_constraintBottom_toTopOf="@+id/default_switch"
+            app:layout_constraintStart_toStartOf="@+id/default_filters"
+            app:layout_constraintTop_toBottomOf="@+id/default_filters" />
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/default_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectDefault"
+            android:text="@string/default_switch"
+            app:layout_constraintBottom_toTopOf="@+id/custom_filters"
+            app:layout_constraintStart_toStartOf="@+id/red_switch"
+            app:layout_constraintTop_toBottomOf="@+id/red_switch" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/custom_filters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:text="@string/custom_filters"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toTopOf="@+id/custom_switch1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/default_switch" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/custom_switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectCustom1"
+            android:text="@string/custom_switch1"
+            app:layout_constraintBottom_toTopOf="@+id/custom_switch2"
+            app:layout_constraintStart_toStartOf="@+id/custom_filters"
+            app:layout_constraintTop_toBottomOf="@+id/custom_filters" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/custom_switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectCustom2"
+            android:text="@string/custom_switch2"
+            app:layout_constraintBottom_toTopOf="@+id/apply_filter"
+            app:layout_constraintStart_toStartOf="@+id/custom_switch1"
+            app:layout_constraintTop_toBottomOf="@+id/custom_switch1" />
+
+        <Button
+            android:id="@+id/apply_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="applyFilter"
+            android:text="@string/apply_filter"
+            app:layout_constraintBottom_toTopOf="@+id/image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_switch2" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="359dp"
+            android:layout_height="275dp"
+            android:contentDescription="@string/mountains_content_description"
+            app:layout_constraintBottom_toTopOf="@+id/select_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/apply_filter"
+            app:layout_constraintTop_toBottomOf="@+id/apply_filter"
+            app:srcCompat="@drawable/mountains" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/palm_tree"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:contentDescription="@string/palm_tree_content_description"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/select_image"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/mountains"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/mountains"-->
+<!--            app:srcCompat="@drawable/palm_tree" />-->
+
+        <TextView
+            android:id="@+id/select_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_image"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toTopOf="@+id/select_image1"
+            app:layout_constraintStart_toStartOf="@+id/apply_filter"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/select_image1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectImage1"
+            android:text="@string/image1"
+            app:layout_constraintBottom_toTopOf="@+id/select_image2"
+            app:layout_constraintStart_toStartOf="@+id/select_image"
+            app:layout_constraintTop_toBottomOf="@+id/select_image" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/select_image2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectImage2"
+            android:text="@string/image2"
+            app:layout_constraintBottom_toTopOf="@+id/apply_image"
+            app:layout_constraintStart_toStartOf="@+id/select_image1"
+            app:layout_constraintTop_toBottomOf="@+id/select_image1" />
+
+        <Button
+            android:id="@+id/apply_image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="applyImage"
+            android:text="@string/apply_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_image2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
