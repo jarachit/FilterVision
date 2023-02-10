@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             mountains.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
         } else if (cust2.isChecked()) {
             mountains.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
+        } else {
+            mountains.getDrawable().clearColorFilter();
         }
     }
     public void selectImage1(View view) {
