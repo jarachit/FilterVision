@@ -8,12 +8,16 @@ import android.widget.ImageView;
 import android.graphics.PorterDuff;
 
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.appcompat.widget.AppCompatSeekBar;
 
 public class MainActivity extends AppCompatActivity {
     SwitchCompat red;
     SwitchCompat def;
     SwitchCompat cust1;
     SwitchCompat cust2;
+    AppCompatSeekBar red_slider;
+    AppCompatSeekBar green_slider;
+    AppCompatSeekBar blue_slider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,29 +27,56 @@ public class MainActivity extends AppCompatActivity {
         def = findViewById(R.id.default_switch);
         cust1 = findViewById(R.id.custom_switch1);
         cust2 = findViewById(R.id.custom_switch2);
+        red_slider = findViewById(R.id.red_slider);
+        green_slider = findViewById(R.id.green_slider);
+        blue_slider = findViewById(R.id.blue_slider);
     }
 
     public void selectDefault(View view) {
         red.setChecked(false);
         cust1.setChecked(false);
         cust2.setChecked(false);
+        red_slider.setProgress(0);
+        green_slider.setProgress(0);
+        blue_slider.setProgress(0);
     }
 
     public void selectRed(View view) {
         def.setChecked(false);
         cust1.setChecked(false);
         cust2.setChecked(false);
+        red_slider.setProgress(0);
+        green_slider.setProgress(0);
+        blue_slider.setProgress(0);
     }
     public void selectCustom1(View view) {
         red.setChecked(false);
         def.setChecked(false);
         cust2.setChecked(false);
+        red_slider.setProgress(0);
+        green_slider.setProgress(0);
+        blue_slider.setProgress(0);
     }
 
     public void selectCustom2(View view) {
         def.setChecked(false);
         cust1.setChecked(false);
         red.setChecked(false);
+        red_slider.setProgress(0);
+        green_slider.setProgress(0);
+        blue_slider.setProgress(0);
+    }
+
+    public void adjustRedSlider(View view) {
+
+    }
+
+    public void adjustGreenSlider(View view) {
+
+    }
+
+    public void adjustBlueSlider(View view) {
+
     }
 
     public void applyFilter(View view) {

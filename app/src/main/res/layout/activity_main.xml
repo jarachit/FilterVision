@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="ExtraText">
 
         <TextView
             android:id="@+id/default_filters"
@@ -72,9 +73,57 @@
             android:layout_height="wrap_content"
             android:onClick="selectCustom2"
             android:text="@string/custom_switch2"
-            app:layout_constraintBottom_toTopOf="@+id/apply_filter"
+            app:layout_constraintBottom_toTopOf="@+id/rgb_sliders"
             app:layout_constraintStart_toStartOf="@+id/custom_switch1"
             app:layout_constraintTop_toBottomOf="@+id/custom_switch1" />
+
+        <TextView
+            android:id="@+id/rgb_sliders"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:text="@string/rgb_sliders"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toTopOf="@+id/red_slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/custom_switch2" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/red_slider"
+            android:layout_width="256dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="10dp"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintBottom_toTopOf="@+id/green_slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rgb_sliders" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/green_slider"
+            android:layout_width="256dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="10dp"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintBottom_toTopOf="@+id/blue_slider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/red_slider" />
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/blue_slider"
+            android:layout_width="256dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="10dp"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintBottom_toTopOf="@+id/apply_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/green_slider" />
 
         <Button
             android:id="@+id/apply_filter"
@@ -85,7 +134,7 @@
             app:layout_constraintBottom_toTopOf="@+id/image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_switch2" />
+            app:layout_constraintTop_toBottomOf="@+id/blue_slider" />
 
         <ImageView
             android:id="@+id/image"

@@ -13,4 +13,8 @@
     <string name="image1">Palm Tree</string>
     <string name="image2">Mountains</string>
     <string name="apply_image">Apply Image</string>
+    <string name="rgb_sliders">RGB Sliders</string>
+    <string name="red_slider">Red</string>
+    <string name="green_slider">Green</string>
+    <string name="blue_slider">Blue</string>
 </resources>
