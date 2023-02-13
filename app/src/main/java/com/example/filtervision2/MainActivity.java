@@ -18,32 +18,38 @@ public class MainActivity extends AppCompatActivity {
     RadioButton red;
     RadioButton green;
     RadioButton blue;
+    RadioButton custom;
     SeekBar red_slider;
     SeekBar green_slider;
     SeekBar blue_slider;
+    RadioButton select_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         def = findViewById(R.id.default_button);
+        def.setChecked(true);
         red = findViewById(R.id.red_button);
         green = findViewById(R.id.green_button);
         blue = findViewById(R.id.blue_button);
+        custom = findViewById(R.id.custom_button);
 
         red_slider = findViewById(R.id.red_slider);
         green_slider = findViewById(R.id.green_slider);
         blue_slider = findViewById(R.id.blue_slider);
 
+        select_image = findViewById(R.id.select_image2);
+        select_image.setChecked(true);
         red_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChangedValue = 0;
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChangedValue = progress;
-                def.setChecked(false);
-                red.setChecked(false);
-                green.setChecked(false);
-                blue.setChecked(false);
+//                def.setChecked(false);
+//                red.setChecked(false);
+//                green.setChecked(false);
+//                blue.setChecked(false);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -59,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChangedValue = progress;
-                def.setChecked(false);
-                red.setChecked(false);
-                green.setChecked(false);
-                blue.setChecked(false);
+//                def.setChecked(false);
+//                red.setChecked(false);
+//                green.setChecked(false);
+//                blue.setChecked(false);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -78,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChangedValue = progress;
-                def.setChecked(false);
-                red.setChecked(false);
-                green.setChecked(false);
-                blue.setChecked(false);
+//                def.setChecked(false);
+//                red.setChecked(false);
+//                green.setChecked(false);
+//                blue.setChecked(false);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -96,9 +102,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        red_slider.setProgress(0);
-        green_slider.setProgress(0);
-        blue_slider.setProgress(0);
+//        red_slider.setProgress(0);
+//        green_slider.setProgress(0);
+//        blue_slider.setProgress(0);
 
         switch(view.getId()){
             case R.id.red_button:
@@ -116,13 +122,15 @@ public class MainActivity extends AppCompatActivity {
         } else if (red.isChecked()) {
             mountains.getDrawable().setColorFilter(0xffff7276, PorterDuff.Mode.MULTIPLY);
         } else if (green.isChecked()) {
-            mountains.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
-        } else if (blue.isChecked()) {
             mountains.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
+        } else if (blue.isChecked()) {
+            mountains.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
         } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
             mountains.getDrawable().clearColorFilter();
-        }  else {
+        }  else if (custom.isChecked()) {
             mountains.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
+        } else {
+            mountains.getDrawable().clearColorFilter();
         }
     }
 

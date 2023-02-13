@@ -13,220 +13,199 @@
         android:layout_height="wrap_content"
         tools:ignore="ExtraText">
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/palm_tree"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:contentDescription="@string/palm_tree_content_description"-->
-        <!--            app:layout_constraintBottom_toTopOf="@+id/select_image"-->
-        <!--            app:layout_constraintStart_toStartOf="@+id/mountains"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/mountains"-->
-        <!--            app:srcCompat="@drawable/palm_tree" />-->
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="359dp"
-            android:layout_height="275dp"
-            android:layout_marginTop="377dp"
-            android:layout_marginBottom="167dp"
-            android:contentDescription="@string/mountains_content_description"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/mountains" />
-
-        <Button
-            android:id="@+id/apply_filter"
-            android:layout_width="411dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="329dp"
-            android:layout_marginBottom="442dp"
-            android:onClick="applyFilter"
-            android:text="@string/apply_filter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/apply_image"
-            android:layout_width="411dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="658dp"
-            android:layout_marginBottom="113dp"
-            android:onClick="applyImage"
-            android:text="@string/apply_image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <RadioButton
-            android:id="@+id/select_image1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="   Palm Tree"
-            android:textAlignment="textStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="791dp" />
-
-        <RadioButton
-            android:id="@+id/select_image2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="   Mountains"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="839dp" />
-
-        <SeekBar
-            android:id="@+id/red_slider"
-            android:layout_width="256dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="312dp"
-            android:max="255"
-            android:progress="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <SeekBar
-            android:id="@+id/green_slider"
-            android:layout_width="256dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="336dp"
-            android:max="255"
-            android:progress="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <SeekBar
-            android:id="@+id/blue_slider"
-            android:layout_width="256dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="360dp"
-            android:max="255"
-            android:progress="0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="336dp"
-            android:layout_marginEnd="8dp"
-            android:text="G"
-            app:layout_constraintEnd_toStartOf="@+id/green_slider"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/color_filter"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/button_group"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="360dp"
-            android:layout_marginEnd="8dp"
-            android:text="B"
-            app:layout_constraintEnd_toStartOf="@+id/blue_slider"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView">
+
+            <RadioButton
+                android:id="@+id/default_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/default_button" />
+
+            <RadioButton
+                android:id="@+id/red_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/red_button" />
+
+            <RadioButton
+                android:id="@+id/green_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/green_button" />
+
+            <RadioButton
+                android:id="@+id/blue_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/blue_button" />
+
+            <RadioButton
+                android:id="@+id/custom_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/custom_button" />
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="310dp"
-            android:layout_marginEnd="8dp"
-            android:text="R"
-            app:layout_constraintEnd_toStartOf="@+id/red_slider"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="35dp"
+            android:text="@string/red_slider"
+            app:layout_constraintRight_toLeftOf="@id/red_slider"
+            app:layout_constraintStart_toStartOf="@id/button_group"
+            app:layout_constraintTop_toBottomOf="@id/button_group" />
 
-        <RadioGroup
-            android:id="@+id/button_group"
-            android:layout_width="350dp"
-            android:layout_height="249dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.426"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView">
-
-            <RadioButton
-                android:id="@+id/default_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/black"
-                android:onClick="onClick"
-                android:text="   Default" />
-
-            <RadioButton
-                android:id="@+id/red_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:text="   Red" />
-
-            <RadioButton
-                android:id="@+id/green_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:text="   Green" />
-
-            <RadioButton
-                android:id="@+id/blue_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                android:text="   Blue" />
-
-            <RadioButton
-                android:id="@+id/custom_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="   Custom" />
-
-        </RadioGroup>
-
-        <RadioGroup
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="717dp"
-            android:layout_marginBottom="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </RadioGroup>
+        <SeekBar
+            android:id="@+id/red_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:buttonTint="@color/purple_700"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintLeft_toRightOf="@id/textView2"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_group" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="781dp"
-            android:text="Color Filter"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="button_group"
+            android:layout_marginStart="35dp"
+            android:text="@string/green_slider"
+            app:layout_constraintRight_toLeftOf="@+id/green_slider"
+            app:layout_constraintStart_toStartOf="@id/button_group"
+            app:layout_constraintTop_toBottomOf="@+id/red_slider" />
+
+        <SeekBar
+            android:id="@+id/green_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:buttonTint="@color/purple_700"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintLeft_toRightOf="@id/textView3"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/red_slider" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:text="@string/blue_slider"
+            app:layout_constraintRight_toLeftOf="@+id/blue_slider"
+            app:layout_constraintStart_toStartOf="@id/button_group"
+            app:layout_constraintTop_toBottomOf="@+id/green_slider" />
+
+        <SeekBar
+            android:id="@+id/blue_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:buttonTint="@color/purple_700"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintLeft_toRightOf="@id/textView4"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/green_slider" />
+
+        <Button
+            android:id="@+id/apply_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="applyFilter"
+            android:text="@string/apply_filter"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.235" />
+            app:layout_constraintTop_toBottomOf="@id/blue_slider" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="400dp"
+            android:layout_height="310dp"
+            android:contentDescription="@string/mountains_content_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/apply_filter"
+            app:srcCompat="@drawable/mountains" />
+        <RadioGroup
+            android:id="@+id/button_group2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image">
+
+            <RadioButton
+                android:id="@+id/select_image1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/palm_tree_select"
+                android:buttonTint="@color/purple_700"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image" />
+
+            <RadioButton
+                android:id="@+id/select_image2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mountains_select"
+                android:buttonTint="@color/purple_700"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/select_image1" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/apply_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="applyImage"
+            android:text="@string/apply_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/button_group2"
+            app:layout_constraintTop_toBottomOf="@id/button_group2" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

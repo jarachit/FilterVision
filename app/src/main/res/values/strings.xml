@@ -14,7 +14,15 @@
     <string name="image2">Mountains</string>
     <string name="apply_image">Apply Image</string>
     <string name="rgb_sliders">RGB Sliders</string>
-    <string name="red_slider">Red</string>
-    <string name="green_slider">Green</string>
-    <string name="blue_slider">Blue</string>
+    <string name="red_slider">R</string>
+    <string name="green_slider">G</string>
+    <string name="blue_slider">B</string>
+    <string name="mountains_select">Mountains</string>
+    <string name="palm_tree_select">Palm Tree</string>
+    <string name="color_filter">Color Filter</string>
+    <string name="default_button">Default</string>
+    <string name="red_button">Red</string>
+    <string name="green_button">Green</string>
+    <string name="blue_button">Blue</string>
+    <string name="custom_button">Custom</string>
 </resources>
