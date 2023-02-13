@@ -99,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
         red_slider.setProgress(0);
         green_slider.setProgress(0);
         blue_slider.setProgress(0);
+
+        switch(view.getId()){
+            case R.id.red_button:
+                if(!red.isChecked()){
+                    red.setChecked(true);
+                }
+        }
         // more functionality, if needed
     }
 
