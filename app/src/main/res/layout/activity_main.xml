@@ -13,190 +13,204 @@
         android:layout_height="wrap_content"
         tools:ignore="ExtraText">
 
-        <TextView
-            android:id="@+id/default_filters"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/default_filters"
-            android:textColor="@color/teal_200"
-            app:layout_constraintBottom_toTopOf="@+id/red_switch"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/red_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="selectRed"
-            android:text="@string/red_switch"
-            app:layout_constraintBottom_toTopOf="@+id/default_switch"
-            app:layout_constraintStart_toStartOf="@+id/default_filters"
-            app:layout_constraintTop_toBottomOf="@+id/default_filters" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/default_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="selectDefault"
-            android:text="@string/default_switch"
-            app:layout_constraintBottom_toTopOf="@+id/custom_filters"
-            app:layout_constraintStart_toStartOf="@+id/red_switch"
-            app:layout_constraintTop_toBottomOf="@+id/red_switch" />
-
-        <TextView
-            android:id="@+id/custom_filters"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:text="@string/custom_filters"
-            android:textColor="@color/teal_200"
-            app:layout_constraintBottom_toTopOf="@+id/custom_switch1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/default_switch" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/custom_switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="selectCustom1"
-            android:text="@string/custom_switch1"
-            app:layout_constraintBottom_toTopOf="@+id/custom_switch2"
-            app:layout_constraintStart_toStartOf="@+id/custom_filters"
-            app:layout_constraintTop_toBottomOf="@+id/custom_filters" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/custom_switch2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="selectCustom2"
-            android:text="@string/custom_switch2"
-            app:layout_constraintBottom_toTopOf="@+id/rgb_sliders"
-            app:layout_constraintStart_toStartOf="@+id/custom_switch1"
-            app:layout_constraintTop_toBottomOf="@+id/custom_switch1" />
-
-        <TextView
-            android:id="@+id/rgb_sliders"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:text="@string/rgb_sliders"
-            android:textColor="@color/teal_200"
-            app:layout_constraintBottom_toTopOf="@+id/red_slider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/custom_switch2" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/palm_tree"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:contentDescription="@string/palm_tree_content_description"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/select_image"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/mountains"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/mountains"-->
+        <!--            app:srcCompat="@drawable/palm_tree" />-->
 
         <SeekBar
             android:id="@+id/red_slider"
             android:layout_width="256dp"
             android:layout_height="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="248dp"
             android:max="255"
             android:progress="0"
-            app:layout_constraintBottom_toTopOf="@+id/green_slider"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rgb_sliders" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <SeekBar
             android:id="@+id/green_slider"
             android:layout_width="256dp"
             android:layout_height="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="272dp"
             android:max="255"
             android:progress="0"
-            app:layout_constraintBottom_toTopOf="@+id/blue_slider"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/red_slider" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <SeekBar
             android:id="@+id/blue_slider"
             android:layout_width="256dp"
             android:layout_height="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="296dp"
             android:max="255"
             android:progress="0"
-            app:layout_constraintBottom_toTopOf="@+id/apply_filter"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/green_slider" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/apply_filter"
-            android:layout_width="0dp"
+            android:layout_width="411dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="329dp"
+            android:layout_marginBottom="442dp"
             android:onClick="applyFilter"
             android:text="@string/apply_filter"
-            app:layout_constraintBottom_toTopOf="@+id/image"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/blue_slider" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/image"
             android:layout_width="359dp"
             android:layout_height="275dp"
+            android:layout_marginTop="377dp"
+            android:layout_marginBottom="167dp"
             android:contentDescription="@string/mountains_content_description"
-            app:layout_constraintBottom_toTopOf="@+id/select_image"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/apply_filter"
-            app:layout_constraintTop_toBottomOf="@+id/apply_filter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/mountains" />
-
-<!--        <ImageView-->
-<!--            android:id="@+id/palm_tree"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:contentDescription="@string/palm_tree_content_description"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/select_image"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/mountains"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/mountains"-->
-<!--            app:srcCompat="@drawable/palm_tree" />-->
-
-        <TextView
-            android:id="@+id/select_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/select_image"
-            android:textColor="@color/teal_200"
-            app:layout_constraintBottom_toTopOf="@+id/select_image1"
-            app:layout_constraintStart_toStartOf="@+id/apply_filter"
-            app:layout_constraintTop_toBottomOf="@+id/image" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/select_image1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="selectImage1"
-            android:text="@string/image1"
-            app:layout_constraintBottom_toTopOf="@+id/select_image2"
-            app:layout_constraintStart_toStartOf="@+id/select_image"
-            app:layout_constraintTop_toBottomOf="@+id/select_image" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/select_image2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="selectImage2"
-            android:text="@string/image2"
-            app:layout_constraintBottom_toTopOf="@+id/apply_image"
-            app:layout_constraintStart_toStartOf="@+id/select_image1"
-            app:layout_constraintTop_toBottomOf="@+id/select_image1" />
 
         <Button
             android:id="@+id/apply_image"
-            android:layout_width="0dp"
+            android:layout_width="411dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="658dp"
+            android:layout_marginBottom="113dp"
             android:onClick="applyImage"
             android:text="@string/apply_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/select_image2" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/default_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="   Default" />
+
+            <RadioButton
+                android:id="@+id/red_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="   Red" />
+
+            <RadioButton
+                android:id="@+id/green_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="   Green" />
+
+            <RadioButton
+                android:id="@+id/blue_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="   Blue" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="717dp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/select_image1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="   Palm Tree"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <RadioButton
+                android:id="@+id/select_image2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="   Mountains"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="781dp"
+            android:text="Color Filter"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="248dp"
+            android:layout_marginEnd="5dp"
+            android:text="R"
+            app:layout_constraintEnd_toStartOf="@+id/red_slider"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="272dp"
+            android:layout_marginEnd="5dp"
+            android:text="G"
+            app:layout_constraintEnd_toStartOf="@+id/green_slider"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="297dp"
+            android:layout_marginEnd="5dp"
+            android:text="B"
+            app:layout_constraintEnd_toStartOf="@+id/blue_slider"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
