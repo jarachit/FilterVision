@@ -2,22 +2,23 @@ package com.example.filtervision2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.graphics.PorterDuff;
+import android.widget.SeekBar;
 
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.AppCompatSeekBar;
 
 public class MainActivity extends AppCompatActivity {
     SwitchCompat red;
     SwitchCompat def;
     SwitchCompat cust1;
     SwitchCompat cust2;
-    AppCompatSeekBar red_slider;
-    AppCompatSeekBar green_slider;
-    AppCompatSeekBar blue_slider;
+    SeekBar red_slider;
+    SeekBar green_slider;
+    SeekBar blue_slider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,63 @@ public class MainActivity extends AppCompatActivity {
         red_slider = findViewById(R.id.red_slider);
         green_slider = findViewById(R.id.green_slider);
         blue_slider = findViewById(R.id.blue_slider);
+        red_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+                def.setChecked(false);
+                cust1.setChecked(false);
+                red.setChecked(false);
+                cust2.setChecked(false);
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        green_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+                def.setChecked(false);
+                cust1.setChecked(false);
+                red.setChecked(false);
+                cust2.setChecked(false);
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        blue_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+                def.setChecked(false);
+                cust1.setChecked(false);
+                red.setChecked(false);
+                cust2.setChecked(false);
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     public void selectDefault(View view) {
@@ -67,18 +125,6 @@ public class MainActivity extends AppCompatActivity {
         blue_slider.setProgress(0);
     }
 
-    public void adjustRedSlider(View view) {
-
-    }
-
-    public void adjustGreenSlider(View view) {
-
-    }
-
-    public void adjustBlueSlider(View view) {
-
-    }
-
     public void applyFilter(View view) {
         ImageView mountains = findViewById(R.id.image);
         if (red.isChecked()) {
@@ -89,8 +135,10 @@ public class MainActivity extends AppCompatActivity {
             mountains.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
         } else if (cust2.isChecked()) {
             mountains.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
-        } else {
+        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0){
             mountains.getDrawable().clearColorFilter();
+        } else {
+            mountains.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
         }
     }
     public void selectImage1(View view) {

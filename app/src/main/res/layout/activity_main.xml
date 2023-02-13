@@ -89,7 +89,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/custom_switch2" />
 
-        <androidx.appcompat.widget.AppCompatSeekBar
+        <SeekBar
             android:id="@+id/red_slider"
             android:layout_width="256dp"
             android:layout_height="20dp"
@@ -101,7 +101,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rgb_sliders" />
 
-        <androidx.appcompat.widget.AppCompatSeekBar
+        <SeekBar
             android:id="@+id/green_slider"
             android:layout_width="256dp"
             android:layout_height="20dp"
@@ -113,7 +113,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/red_slider" />
 
-        <androidx.appcompat.widget.AppCompatSeekBar
+        <SeekBar
             android:id="@+id/blue_slider"
             android:layout_width="256dp"
             android:layout_height="20dp"
