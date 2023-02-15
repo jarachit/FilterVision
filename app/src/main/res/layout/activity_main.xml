@@ -1,211 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".MainActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
+    android:layout_height="match_parent"
+    tools:context="com.example.filtervision2.MainActivity"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="#fcfcfc"
+    android:gravity="center"
+    android:id="@+id/ll">
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="ExtraText">
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tutorial"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/cwhite"
+                    android:src="@drawable/baseline_question_mark_24"
+                    android:padding="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="Tutorial"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightgray"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Description"
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/color_filter"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/filters"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp">
 
-        <RadioGroup
-            android:id="@+id/button_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/default_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/default_button" />
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/cwhite"
+                    android:src="@drawable/baseline_filter_alt_24"
+                    android:padding="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Filters"
+                    android:textStyle="bold" />
 
-            <RadioButton
-                android:id="@+id/red_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/red_button" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightgray"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Choose your filters"
+                    android:textColor="@android:color/darker_gray" />
 
-            <RadioButton
-                android:id="@+id/green_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/green_button" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <RadioButton
-                android:id="@+id/blue_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/blue_button" />
+    </LinearLayout>
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/test"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/cwhite"
+                    android:src="@drawable/baseline_check_circle_outline_24"
+                    android:padding="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="Test"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/lightgray"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Test which color isn't for you"
+                    android:padding="5dp"
+                    android:textColor="@android:color/darker_gray"/>
 
-            <RadioButton
-                android:id="@+id/custom_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/custom_button" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:foreground="?android:attr/selectableItemBackground"-->
+        <!--            android:clickable="true"-->
+        <!--            android:layout_width="160dp"-->
+        <!--            android:layout_height="190dp"-->
+        <!--            android:layout_margin="10dp">-->
 
-        </RadioGroup>
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:gravity="center"-->
+        <!--                android:orientation="vertical">-->
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:text="@string/red_slider"
-            app:layout_constraintRight_toLeftOf="@id/red_slider"
-            app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@id/button_group" />
+        <!--                <ImageView-->
+        <!--                    android:layout_width="64dp"-->
+        <!--                    android:layout_height="64dp"/>-->
+        <!--&lt;!&ndash;                    android:background="@drawable/cerclebackgroundyello"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:padding="10dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:src="@drawable/ic_attach_file_black_24dp" />&ndash;&gt;-->
 
-        <SeekBar
-            android:id="@+id/red_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:buttonTint="@color/purple_700"
-            android:max="255"
-            android:progress="0"
-            app:layout_constraintLeft_toRightOf="@id/textView2"
-            app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_group" />
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="10dp"-->
+        <!--                    android:text="Links"-->
+        <!--                    android:textStyle="bold" />-->
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:text="@string/green_slider"
-            app:layout_constraintRight_toLeftOf="@+id/green_slider"
-            app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@+id/red_slider" />
+        <!--                <View-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="1dp"-->
+        <!--                    android:layout_margin="10dp"/>-->
+        <!--&lt;!&ndash;                    android:background="@color/lightgray" />&ndash;&gt;-->
 
-        <SeekBar
-            android:id="@+id/green_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:buttonTint="@color/purple_700"
-            android:max="255"
-            android:progress="0"
-            app:layout_constraintLeft_toRightOf="@id/textView3"
-            app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/red_slider" />
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:padding="5dp"-->
+        <!--                    android:text="Check your bank activities"-->
+        <!--                    android:textColor="@android:color/darker_gray" />-->
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:text="@string/blue_slider"
-            app:layout_constraintRight_toLeftOf="@+id/blue_slider"
-            app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@+id/green_slider" />
+        <!--            </LinearLayout>-->
+        <!--        </androidx.cardview.widget.CardView>-->
 
-        <SeekBar
-            android:id="@+id/blue_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:buttonTint="@color/purple_700"
-            android:max="255"
-            android:progress="0"
-            app:layout_constraintLeft_toRightOf="@id/textView4"
-            app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/green_slider" />
+        <!--    </LinearLayout>-->
+        <!--    <LinearLayout-->
+        <!--        android:clipToPadding="false"-->
+        <!--        android:gravity="center"-->
+        <!--        android:orientation="horizontal"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content">-->
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:foreground="?android:attr/selectableItemBackground"-->
+        <!--            android:clickable="true"-->
+        <!--            android:layout_width="340dp"-->
+        <!--            android:layout_height="150dp"-->
+        <!--            android:layout_margin="10dp">-->
+        <!--            <LinearLayout-->
 
-        <Button
-            android:id="@+id/apply_filter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:onClick="applyFilter"
-            android:text="@string/apply_filter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/blue_slider" />
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:orientation="vertical"-->
+        <!--                android:gravity="center">-->
+        <!--                <ImageView-->
+        <!--                    android:layout_width="64dp"-->
+        <!--                    android:layout_height="64dp"/>-->
+        <!--&lt;!&ndash;                    android:background="@drawable/cerclebackgroundpurple"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:src="@drawable/ic_wifi_black_24dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:padding="10dp"/>&ndash;&gt;-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    android:layout_marginTop="10dp"-->
+        <!--                    android:text="Add"/>-->
+        <!--                <View-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="1dp"/>-->
+        <!--&lt;!&ndash;                    android:background="@color/lightgray"&ndash;&gt;-->
+        <!--&lt;!&ndash;                    android:layout_margin="10dp"/>&ndash;&gt;-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:text="Check your bank activities"-->
+        <!--                    android:padding="5dp"-->
+        <!--                    android:textColor="@android:color/darker_gray"/>-->
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="400dp"
-            android:layout_height="310dp"
-            android:contentDescription="@string/mountains_content_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/apply_filter"
-            app:srcCompat="@drawable/mountains" />
-        <RadioGroup
-            android:id="@+id/button_group2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image">
-
-            <RadioButton
-                android:id="@+id/select_image1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/palm_tree_select"
-                android:buttonTint="@color/purple_700"
-                android:textAlignment="textStart"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image" />
-
-            <RadioButton
-                android:id="@+id/select_image2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mountains_select"
-                android:buttonTint="@color/purple_700"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/select_image1" />
-
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/apply_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:onClick="applyImage"
-            android:text="@string/apply_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/button_group2"
-            app:layout_constraintTop_toBottomOf="@id/button_group2" />
+        <!--            </LinearLayout>-->
+        <!--        </androidx.cardview.widget.CardView>-->
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    </LinearLayout>
+</LinearLayout>

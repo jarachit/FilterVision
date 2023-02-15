@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="ExtraText">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/color_filter"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/button_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView">
+
+            <RadioButton
+                android:id="@+id/default_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/default_button" />
+
+            <RadioButton
+                android:id="@+id/red_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/red_button" />
+
+            <RadioButton
+                android:id="@+id/green_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/green_button" />
+
+            <RadioButton
+                android:id="@+id/blue_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/blue_button" />
+
+            <RadioButton
+                android:id="@+id/custom_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/custom_button" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:text="@string/red_slider"
+            app:layout_constraintRight_toLeftOf="@id/red_slider"
+            app:layout_constraintStart_toStartOf="@id/button_group"
+            app:layout_constraintTop_toBottomOf="@id/button_group" />
+
+        <SeekBar
+            android:id="@+id/red_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:buttonTint="@color/purple_700"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintLeft_toRightOf="@id/textView2"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_group" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:text="@string/green_slider"
+            app:layout_constraintRight_toLeftOf="@+id/green_slider"
+            app:layout_constraintStart_toStartOf="@id/button_group"
+            app:layout_constraintTop_toBottomOf="@+id/red_slider" />
+
+        <SeekBar
+            android:id="@+id/green_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:buttonTint="@color/purple_700"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintLeft_toRightOf="@id/textView3"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/red_slider" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:text="@string/blue_slider"
+            app:layout_constraintRight_toLeftOf="@+id/blue_slider"
+            app:layout_constraintStart_toStartOf="@id/button_group"
+            app:layout_constraintTop_toBottomOf="@+id/green_slider" />
+
+        <SeekBar
+            android:id="@+id/blue_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:buttonTint="@color/purple_700"
+            android:max="255"
+            android:progress="0"
+            app:layout_constraintLeft_toRightOf="@id/textView4"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/green_slider" />
+
+        <Button
+            android:id="@+id/apply_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="applyFilter"
+            android:text="@string/apply_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/blue_slider" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="400dp"
+            android:layout_height="310dp"
+            android:contentDescription="@string/mountains_content_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/apply_filter"
+            app:srcCompat="@drawable/mountains" />
+        <RadioGroup
+            android:id="@+id/button_group2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image">
+
+            <RadioButton
+                android:id="@+id/select_image1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/palm_tree_select"
+                android:buttonTint="@color/purple_700"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image" />
+
+            <RadioButton
+                android:id="@+id/select_image2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mountains_select"
+                android:buttonTint="@color/purple_700"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/select_image1" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/apply_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="applyImage"
+            android:text="@string/apply_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/button_group2"
+            app:layout_constraintTop_toBottomOf="@id/button_group2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
