@@ -45,4 +45,12 @@ Only the "Filters" section is currently implemented.
 ## Alternate Options
 Open the app-release.apk file and download it on your Android phone. If your phone requests permission from system settings, allow them, and continue to download the file.
 
+![Screenshot_20230215_125515_Package_installer](/uploads/a16b22698696700e57ee5636149ab7b9/Screenshot_20230215_125515_Package_installer.jpg)
+
+![Screenshot_20230215_125525_Settings](/uploads/18fccb698dc985538ba3526d80fb108b/Screenshot_20230215_125525_Settings.jpg)
+
+Google Play will ask if you want to continue opening the app. Select "install anyway".
+
+![Screenshot_20230215_125601_Google_Play_Store](/uploads/52d8556744af94ec84c57751d8e86f62/Screenshot_20230215_125601_Google_Play_Store.jpg)
+
 Upon installation, open the file, and the app should open.
