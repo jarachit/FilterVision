@@ -14,7 +14,7 @@ Paste the URL of this repository in your directory of choice.
 
 The project should now open.
 
-##Usage
+## Usage
 
 Upon opening the project, select device manager in the top right corner of the screen.
 ![Screenshot__72_](/uploads/b2d9db5020c0d8e910a9051d5deb4e3c/Screenshot__72_.png)
