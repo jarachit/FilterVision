@@ -43,7 +43,7 @@ Only the "Filters" section is currently implemented.
 ![image](/uploads/b4cadd6cf197207d2d2767088a019c91/image.png)
 
 ## Alternate Options
-Open the app-release.apk file and download it on your Android phone. If your phone requests permission from system settings, allow them, and continue to download the file.
+Open the app-release.apk file and download it on your Android phone (On an Apple phone, you will need to download an application that opens .apk files). If your phone requests permission from system settings, allow them, and continue to download the file.
 
 ![Screenshot_20230215_125515_Package_installer](/uploads/a16b22698696700e57ee5636149ab7b9/Screenshot_20230215_125515_Package_installer.jpg)
 
