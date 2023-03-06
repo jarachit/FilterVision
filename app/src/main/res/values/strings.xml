@@ -2,7 +2,7 @@
     <string name="app_name">FilterVision2</string>
     <string name="red_switch">Red</string>
     <string name="default_switch">Default</string>
-    <string name="mountains_content_description">Mountains</string>
+    <string name="image_content_description">Image</string>
     <string name="palm_tree_content_description">Palm Tree</string>
     <string name="apply_filter">Apply Filter</string>
     <string name="default_filters">Default Filters</string>

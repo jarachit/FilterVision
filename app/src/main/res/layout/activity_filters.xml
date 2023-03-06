@@ -158,54 +158,60 @@
             app:layout_constraintTop_toBottomOf="@id/blue_slider" />
 
         <ImageView
-            android:id="@+id/image"
-            android:layout_width="400dp"
-            android:layout_height="310dp"
-            android:contentDescription="@string/mountains_content_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/img_before"
+            android:layout_width="195dp"
+            android:layout_height="155dp"
+            android:contentDescription="@string/image_content_description"
+            app:layout_constraintStart_toStartOf="@id/apply_filter"
             app:layout_constraintTop_toBottomOf="@id/apply_filter"
             app:srcCompat="@drawable/mountains" />
-        <RadioGroup
-            android:id="@+id/button_group2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image">
 
-            <RadioButton
-                android:id="@+id/select_image1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/palm_tree_select"
-                android:buttonTint="@color/purple_700"
-                android:textAlignment="textStart"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image" />
+        <ImageView
+            android:id="@+id/img_after"
+            android:layout_width="195dp"
+            android:layout_height="155dp"
+            android:contentDescription="@string/image_content_description"
+            app:layout_constraintEnd_toEndOf="@id/apply_filter"
+            app:layout_constraintTop_toBottomOf="@id/apply_filter"
+            app:srcCompat="@drawable/mountains" />
+<!--        <RadioGroup-->
+<!--            android:id="@+id/button_group2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/img_gallery">-->
 
-            <RadioButton
-                android:id="@+id/select_image2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mountains_select"
-                android:buttonTint="@color/purple_700"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/select_image1" />
+<!--            <RadioButton-->
+<!--                android:id="@+id/select_image1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/palm_tree_select"-->
+<!--                android:buttonTint="@color/purple_700"-->
+<!--                android:textAlignment="textStart"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/image" />-->
 
-        </RadioGroup>
+<!--            <RadioButton-->
+<!--                android:id="@+id/select_image2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/mountains_select"-->
+<!--                android:buttonTint="@color/purple_700"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/select_image1" />-->
+
+<!--        </RadioGroup>-->
 
         <Button
-            android:id="@+id/apply_image"
+            android:id="@+id/btn_gallery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:onClick="applyImage"
-            android:text="@string/apply_image"
+            android:text="Open Gallery"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/button_group2"
-            app:layout_constraintTop_toBottomOf="@id/button_group2" />
-
+            app:layout_constraintStart_toStartOf="@id/img_before"
+            app:layout_constraintTop_toBottomOf="@id/img_before" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
