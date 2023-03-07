@@ -30,6 +30,9 @@ public class Filters extends AppCompatActivity {
     private final int GALLERY_REQ_CODE = 1;
     ImageView imgAfter;
     ImageView imgBefore;
+    int redVal;
+    int greenVal;
+    int blueVal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,14 +64,14 @@ public class Filters extends AppCompatActivity {
             }
         });
         red_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressChangedValue = 0;
-
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressChangedValue = progress;
-//                def.setChecked(false);
-//                red.setChecked(false);
-//                green.setChecked(false);
-//                blue.setChecked(false);
+                redVal = progress;
+                def.setChecked(false);
+                red.setChecked(false);
+                green.setChecked(false);
+                blue.setChecked(false);
+                custom.setChecked(true);
+                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -80,14 +83,15 @@ public class Filters extends AppCompatActivity {
             }
         });
         green_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressChangedValue = 0;
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressChangedValue = progress;
-//                def.setChecked(false);
-//                red.setChecked(false);
-//                green.setChecked(false);
-//                blue.setChecked(false);
+                greenVal = progress;
+                def.setChecked(false);
+                red.setChecked(false);
+                green.setChecked(false);
+                blue.setChecked(false);
+                custom.setChecked(true);
+                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -99,14 +103,15 @@ public class Filters extends AppCompatActivity {
             }
         });
         blue_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progressChangedValue = 0;
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressChangedValue = progress;
-//                def.setChecked(false);
-//                red.setChecked(false);
-//                green.setChecked(false);
-//                blue.setChecked(false);
+                blueVal = progress;
+                def.setChecked(false);
+                red.setChecked(false);
+                green.setChecked(false);
+                blue.setChecked(false);
+                custom.setChecked(true);
+                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -124,33 +129,48 @@ public class Filters extends AppCompatActivity {
 //        red_slider.setProgress(0);
 //        green_slider.setProgress(0);
 //        blue_slider.setProgress(0);
-
-        switch(view.getId()){
-            case R.id.red_button:
-                if(!red.isChecked()){
-                    red.setChecked(true);
-                }
+        if (def.isChecked()) {
+            imgAfter.getDrawable().clearColorFilter();
+        } else if (red.isChecked()) {
+            imgAfter.getDrawable().setColorFilter(0xffff7276, PorterDuff.Mode.MULTIPLY);
+        } else if (green.isChecked()) {
+            imgAfter.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
+        } else if (blue.isChecked()) {
+            imgAfter.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
+        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
+            imgAfter.getDrawable().clearColorFilter();
+        }  else if (custom.isChecked()) {
+            imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
+        } else {
+            imgAfter.getDrawable().clearColorFilter();
         }
+//        switch(view.getId()){
+//            case R.id.red_button:
+//                if(!red.isChecked()){
+//                    red.setChecked(true);
+//                }
+//        }
         // more functionality, if needed
     }
 
     public void applyFilter(View view) {
-        ImageView img = findViewById(R.id.img_after);
-        if (def.isChecked()) {
-            img.getDrawable().clearColorFilter();
-        } else if (red.isChecked()) {
-            img.getDrawable().setColorFilter(0xffff7276, PorterDuff.Mode.MULTIPLY);
-        } else if (green.isChecked()) {
-            img.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
-        } else if (blue.isChecked()) {
-            img.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
-        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
-            img.getDrawable().clearColorFilter();
-        }  else if (custom.isChecked()) {
-            img.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
-        } else {
-            img.getDrawable().clearColorFilter();
-        }
+        //APPLY TO SCREEN INSTEAD OF IMAGE
+//        ImageView img = findViewById(R.id.img_after);
+//        if (def.isChecked()) {
+//            img.getDrawable().clearColorFilter();
+//        } else if (red.isChecked()) {
+//            img.getDrawable().setColorFilter(0xffff7276, PorterDuff.Mode.MULTIPLY);
+//        } else if (green.isChecked()) {
+//            img.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
+//        } else if (blue.isChecked()) {
+//            img.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
+//        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
+//            img.getDrawable().clearColorFilter();
+//        }  else if (custom.isChecked()) {
+//            img.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
+//        } else {
+//            img.getDrawable().clearColorFilter();
+//        }
     }
 
 //    public void applyImage(View view) {
@@ -175,7 +195,7 @@ public class Filters extends AppCompatActivity {
             if (requestCode == GALLERY_REQ_CODE) {
 
                 imgAfter.setImageURI(data.getData());
-                applyFilter(imgAfter);
+                onClick(imgAfter);
                 imgBefore.setImageURI(data.getData());
                 imgBefore.clearColorFilter();
             }
