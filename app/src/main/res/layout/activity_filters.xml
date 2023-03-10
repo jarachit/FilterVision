@@ -67,6 +67,13 @@
                 android:text="@string/blue_button" />
 
             <RadioButton
+                android:id="@+id/protan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onClick"
+                android:text="Protanopia" />
+
+            <RadioButton
                 android:id="@+id/custom_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

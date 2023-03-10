@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -17,16 +18,24 @@ import android.content.Intent;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.AppCompatSeekBar;
 public class Filters extends AppCompatActivity {
+
+    private static final float[] PROTANOPIA = {
+            0.567F, 0.433F, 0F, 0F, 0,
+            0.558F, 0.442F, 0F, 0F, 0,
+            0F, 0.242F, 0.758F, 0F, 0,
+            0F, 0F, 0F, 1F, 0,
+    };
+
     private static final int RESULT_LOAD_IMAGE = 1;
     RadioButton def;
     RadioButton red;
     RadioButton green;
     RadioButton blue;
+    RadioButton protan;
     RadioButton custom;
     SeekBar red_slider;
     SeekBar green_slider;
     SeekBar blue_slider;
-    RadioButton select_image;
     private final int GALLERY_REQ_CODE = 1;
     ImageView imgAfter;
     ImageView imgBefore;
@@ -42,6 +51,7 @@ public class Filters extends AppCompatActivity {
         red = findViewById(R.id.red_button);
         green = findViewById(R.id.green_button);
         blue = findViewById(R.id.blue_button);
+        protan = findViewById(R.id.protan);
         custom = findViewById(R.id.custom_button);
 
         red_slider = findViewById(R.id.red_slider);
@@ -67,6 +77,7 @@ public class Filters extends AppCompatActivity {
                 red.setChecked(false);
                 green.setChecked(false);
                 blue.setChecked(false);
+                protan.setChecked(false);
                 custom.setChecked(true);
                 imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
@@ -85,6 +96,7 @@ public class Filters extends AppCompatActivity {
                 red.setChecked(false);
                 green.setChecked(false);
                 blue.setChecked(false);
+                protan.setChecked(false);
                 custom.setChecked(true);
                 imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
@@ -102,6 +114,7 @@ public class Filters extends AppCompatActivity {
                 red.setChecked(false);
                 green.setChecked(false);
                 blue.setChecked(false);
+                protan.setChecked(false);
                 custom.setChecked(true);
                 imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
@@ -118,11 +131,13 @@ public class Filters extends AppCompatActivity {
         if (def.isChecked()) {
             imgAfter.getDrawable().clearColorFilter();
         } else if (red.isChecked()) {
-            imgAfter.getDrawable().setColorFilter(0xffff7276, PorterDuff.Mode.MULTIPLY);
+            imgAfter.getDrawable().setColorFilter(0xFFFF7276, PorterDuff.Mode.MULTIPLY);
         } else if (green.isChecked()) {
             imgAfter.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
         } else if (blue.isChecked()) {
             imgAfter.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
+        } else if (protan.isChecked()) {
+            imgAfter.setColorFilter(new ColorMatrixColorFilter(PROTANOPIA));
         } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
             imgAfter.getDrawable().clearColorFilter();
         }  else if (custom.isChecked()) {
