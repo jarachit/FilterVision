@@ -2,17 +2,10 @@ package com.example.filtervision2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
-import android.widget.ImageView;
-import android.graphics.PorterDuff;
-import android.widget.RadioButton;
-import android.widget.SeekBar;
 
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{

@@ -48,9 +48,6 @@ public class Filters extends AppCompatActivity {
         green_slider = findViewById(R.id.green_slider);
         blue_slider = findViewById(R.id.blue_slider);
 
-//        select_image = findViewById(R.id.select_image2);
-//        select_image.setChecked(true);
-
         imgAfter = findViewById(R.id.img_after);
         imgBefore = findViewById(R.id.img_before);
         Button btnGallery = findViewById(R.id.btn_gallery);
@@ -77,13 +74,11 @@ public class Filters extends AppCompatActivity {
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
-
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
         green_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 greenVal = progress;
                 def.setChecked(false);
@@ -93,17 +88,14 @@ public class Filters extends AppCompatActivity {
                 custom.setChecked(true);
                 imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
-
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
-
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
         blue_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 blueVal = progress;
                 def.setChecked(false);
@@ -113,22 +105,16 @@ public class Filters extends AppCompatActivity {
                 custom.setChecked(true);
                 imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
-
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
-
             public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
-
     }
 
     public void onClick(View view) {
-//        red_slider.setProgress(0);
-//        green_slider.setProgress(0);
-//        blue_slider.setProgress(0);
         if (def.isChecked()) {
             imgAfter.getDrawable().clearColorFilter();
         } else if (red.isChecked()) {
@@ -144,48 +130,7 @@ public class Filters extends AppCompatActivity {
         } else {
             imgAfter.getDrawable().clearColorFilter();
         }
-//        switch(view.getId()){
-//            case R.id.red_button:
-//                if(!red.isChecked()){
-//                    red.setChecked(true);
-//                }
-//        }
-        // more functionality, if needed
     }
-
-    public void applyFilter(View view) {
-        //APPLY TO SCREEN INSTEAD OF IMAGE
-//        ImageView img = findViewById(R.id.img_after);
-//        if (def.isChecked()) {
-//            img.getDrawable().clearColorFilter();
-//        } else if (red.isChecked()) {
-//            img.getDrawable().setColorFilter(0xffff7276, PorterDuff.Mode.MULTIPLY);
-//        } else if (green.isChecked()) {
-//            img.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
-//        } else if (blue.isChecked()) {
-//            img.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
-//        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
-//            img.getDrawable().clearColorFilter();
-//        }  else if (custom.isChecked()) {
-//            img.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
-//        } else {
-//            img.getDrawable().clearColorFilter();
-//        }
-    }
-
-//    public void applyImage(View view) {
-//        RadioButton im1 = findViewById(R.id.select_image1);
-//        RadioButton im2 = findViewById(R.id.select_image2);
-//        ImageView image = findViewById(R.id.image);
-//        if (im1.isChecked()) {
-//            image.setImageResource(R.drawable.palm_tree);
-//            applyFilter(image);
-//        } else if (im2.isChecked()) {
-//            image.setImageResource(R.drawable.mountains);
-//            applyFilter(image);
-//        }
-//    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
