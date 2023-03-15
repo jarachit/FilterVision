@@ -70,8 +70,41 @@
                 android:id="@+id/protan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
                 android:onClick="onClick"
                 android:text="Protanopia" />
+
+            <RadioButton
+                android:id="@+id/deuteran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="Deuteranopia" />
+
+            <RadioButton
+                android:id="@+id/tritan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="Tritanopia" />
+
+            <RadioButton
+                android:id="@+id/gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="Grayscale" />
+
+            <RadioButton
+                android:id="@+id/invert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="Inverted" />
 
             <RadioButton
                 android:id="@+id/custom_button"

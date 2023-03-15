@@ -19,11 +19,38 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.AppCompatSeekBar;
 public class Filters extends AppCompatActivity {
 
+    private static final float[] INVERTED = {
+            -1F, 0, 0, 0, 255F,
+            0, -1F, 0, 0, 255F,
+            0, 0, 1F, 0, 255F,
+            0, 0, 0, 1F, 0,
+    };
+
+    private static final float[] GRAYSCALE = {
+            0.3F, 0.59F, 0.11F, 0F, 0,
+            0.3F, 0.59F, 0.11F, 0F, 0,
+            0.3F, 0.59F, 0.11F, 0F, 0,
+            0F, 0F, 0F, 1F, 0,
+    };
     private static final float[] PROTANOPIA = {
             0.567F, 0.433F, 0F, 0F, 0,
             0.558F, 0.442F, 0F, 0F, 0,
             0F, 0.242F, 0.758F, 0F, 0,
             0F, 0F, 0F, 1F, 0,
+    };
+
+    private static final float[] DEUTERANOPIA = {
+            0.625F, 0.375F, 0, 0, 0,
+            0.7F, 0.3F, 0, 0, 0,
+            0, 0.3F, 0.7F, 0, 0,
+            0, 0, 0, 1, 0,
+    };
+
+    private static final float[] TRITANOPIA = {
+            0.95F, 0.05F, 0, 0, 0,
+            0, 0.433F, 0.567F, 0, 0,
+            0, 0.475F, 0.525F, 0, 0,
+            0, 0, 0, 1, 0,
     };
 
     private static final int RESULT_LOAD_IMAGE = 1;
@@ -32,6 +59,10 @@ public class Filters extends AppCompatActivity {
     RadioButton green;
     RadioButton blue;
     RadioButton protan;
+    RadioButton deuteran;
+    RadioButton tritan;
+    RadioButton gray;
+    RadioButton invert;
     RadioButton custom;
     SeekBar red_slider;
     SeekBar green_slider;
@@ -52,6 +83,10 @@ public class Filters extends AppCompatActivity {
         green = findViewById(R.id.green_button);
         blue = findViewById(R.id.blue_button);
         protan = findViewById(R.id.protan);
+        deuteran = findViewById(R.id.deuteran);
+        tritan = findViewById(R.id.tritan);
+        gray = findViewById(R.id.gray);
+        invert = findViewById(R.id.invert);
         custom = findViewById(R.id.custom_button);
 
         red_slider = findViewById(R.id.red_slider);
@@ -78,6 +113,10 @@ public class Filters extends AppCompatActivity {
                 green.setChecked(false);
                 blue.setChecked(false);
                 protan.setChecked(false);
+                deuteran.setChecked(false);
+                tritan.setChecked(false);
+                gray.setChecked(false);
+                invert.setChecked(false);
                 custom.setChecked(true);
                 imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
@@ -97,6 +136,10 @@ public class Filters extends AppCompatActivity {
                 green.setChecked(false);
                 blue.setChecked(false);
                 protan.setChecked(false);
+                deuteran.setChecked(false);
+                tritan.setChecked(false);
+                gray.setChecked(false);
+                invert.setChecked(false);
                 custom.setChecked(true);
                 imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
@@ -115,6 +158,10 @@ public class Filters extends AppCompatActivity {
                 green.setChecked(false);
                 blue.setChecked(false);
                 protan.setChecked(false);
+                deuteran.setChecked(false);
+                tritan.setChecked(false);
+                gray.setChecked(false);
+                invert.setChecked(false);
                 custom.setChecked(true);
                 imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
             }
@@ -138,6 +185,14 @@ public class Filters extends AppCompatActivity {
             imgAfter.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
         } else if (protan.isChecked()) {
             imgAfter.setColorFilter(new ColorMatrixColorFilter(PROTANOPIA));
+        } else if (deuteran.isChecked()) {
+            imgAfter.setColorFilter(new ColorMatrixColorFilter(DEUTERANOPIA));
+        } else if (tritan.isChecked()) {
+            imgAfter.setColorFilter(new ColorMatrixColorFilter(TRITANOPIA));
+        } else if (gray.isChecked()) {
+            imgAfter.setColorFilter(new ColorMatrixColorFilter(GRAYSCALE));
+        } else if (invert.isChecked()) {
+            imgAfter.setColorFilter(new ColorMatrixColorFilter(INVERTED));
         } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
             imgAfter.getDrawable().clearColorFilter();
         }  else if (custom.isChecked()) {
