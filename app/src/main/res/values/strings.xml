@@ -25,4 +25,5 @@
     <string name="green_button">Green</string>
     <string name="blue_button">Blue</string>
     <string name="custom_button">Custom</string>
+    <string name="revert">Revert</string>
 </resources>

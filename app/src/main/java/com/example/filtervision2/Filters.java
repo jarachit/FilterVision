@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.graphics.ColorMatrixColorFilter;
+import android.graphics.ColorFilter;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Button;
 import android.content.Intent;
+import java.util.Vector;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.AppCompatSeekBar;
@@ -52,6 +54,43 @@ public class Filters extends AppCompatActivity {
             0, 0.475F, 0.525F, 0, 0,
             0, 0, 0, 1, 0,
     };
+    private static final float[] defaultFilter = {
+            1, 0, 0, 0, 0,
+            0, 1, 0, 0, 0,
+            0, 0, 1, 0, 0,
+            0, 0, 0, 1, 0,
+    };
+    private static final float[] redFilter = {
+            1, 0, 0, 0, 0,
+            0, 0.447F, 0, 0, 0,
+            0, 0, 0.463F, 0, 0,
+            0, 0, 0, 1, 0,
+    };
+    private static final float[] greenFilter = {
+            0.004F, 0, 0, 0, 0,
+            0, 0.53F, 0, 0, 0,
+            0, 0, 0.5255F, 0, 0,
+            0, 0, 0, 1, 0,
+    };
+//    FF3700B3
+    private static final float[] blueFilter = {
+            0.2157F, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0.702F, 0, 0,
+            0, 0, 0, 1, 0,
+    };
+    private float[] customFilter = {
+            1, 0, 0, 0, 0,
+            0, 1, 0, 0, 0,
+            0, 0, 1, 0, 0,
+            0, 0, 0, 1, 0,
+    };
+
+    private ColorMatrixColorFilter currentFilter = new ColorMatrixColorFilter(defaultFilter);
+    private ColorMatrixColorFilter prevFilter;
+
+    private Vector<ColorMatrixColorFilter> previousFilters = new Vector<ColorMatrixColorFilter>();
+    private boolean prevFilterExists = false;
 
     private static final int RESULT_LOAD_IMAGE = 1;
     RadioButton def;
@@ -118,7 +157,11 @@ public class Filters extends AppCompatActivity {
                 gray.setChecked(false);
                 invert.setChecked(false);
                 custom.setChecked(true);
-                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
+                customFilter[0] = (float) red_slider.getProgress() / 255;
+                customFilter[6] = (float) green_slider.getProgress() / 255;
+                customFilter[12] = (float) blue_slider.getProgress() / 255;
+                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
+                currentFilter = new ColorMatrixColorFilter(customFilter);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -141,7 +184,11 @@ public class Filters extends AppCompatActivity {
                 gray.setChecked(false);
                 invert.setChecked(false);
                 custom.setChecked(true);
-                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
+                customFilter[0] = (float) red_slider.getProgress() / 255;
+                customFilter[6] = (float) green_slider.getProgress() / 255;
+                customFilter[12] = (float) blue_slider.getProgress() / 255;
+                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
+                currentFilter = new ColorMatrixColorFilter(customFilter);
             }
             public void onStartTrackingTouch(SeekBar seekBar) {
 
@@ -163,7 +210,12 @@ public class Filters extends AppCompatActivity {
                 gray.setChecked(false);
                 invert.setChecked(false);
                 custom.setChecked(true);
-                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
+                customFilter[0] = (float) red_slider.getProgress() / 255;
+                customFilter[6] = (float) green_slider.getProgress() / 255;
+                customFilter[12] = (float) blue_slider.getProgress() / 255;
+                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
+//                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
+                currentFilter = new ColorMatrixColorFilter(customFilter);
             }
             public void onStartTrackingTouch(SeekBar seekBar) {
 
@@ -174,32 +226,55 @@ public class Filters extends AppCompatActivity {
         });
     }
 
+    public void applyFilter(View view) {
+        imgBefore.setColorFilter(currentFilter);
+        if (prevFilterExists) {
+            previousFilters.add(prevFilter);
+        }
+        prevFilter = currentFilter;
+        prevFilterExists = true;
+        if (previousFilters.size() > 10) {
+            previousFilters.remove(0);
+        }
+        //Implement apply to whole screen
+    }
+    public void revertFilter(View view) {
+        if (previousFilters.isEmpty()) {
+            prevFilterExists = false;
+            return;
+        }
+        ColorMatrixColorFilter revertedFilter = previousFilters.lastElement();
+        imgBefore.setColorFilter(revertedFilter);
+        previousFilters.remove(previousFilters.size() - 1);
+    }
+
     public void onClick(View view) {
         if (def.isChecked()) {
-            imgAfter.getDrawable().clearColorFilter();
+            currentFilter = new ColorMatrixColorFilter(defaultFilter);
         } else if (red.isChecked()) {
-            imgAfter.getDrawable().setColorFilter(0xFFFF7276, PorterDuff.Mode.MULTIPLY);
+            currentFilter = new ColorMatrixColorFilter(redFilter);
         } else if (green.isChecked()) {
-            imgAfter.getDrawable().setColorFilter(0xFF018786, PorterDuff.Mode.MULTIPLY);
+            currentFilter = new ColorMatrixColorFilter(greenFilter);
         } else if (blue.isChecked()) {
-            imgAfter.getDrawable().setColorFilter(0xFF3700B3, PorterDuff.Mode.MULTIPLY);
+            currentFilter = new ColorMatrixColorFilter(blueFilter);
         } else if (protan.isChecked()) {
-            imgAfter.setColorFilter(new ColorMatrixColorFilter(PROTANOPIA));
+            currentFilter = new ColorMatrixColorFilter(PROTANOPIA);
         } else if (deuteran.isChecked()) {
-            imgAfter.setColorFilter(new ColorMatrixColorFilter(DEUTERANOPIA));
+            currentFilter = new ColorMatrixColorFilter(DEUTERANOPIA);
         } else if (tritan.isChecked()) {
-            imgAfter.setColorFilter(new ColorMatrixColorFilter(TRITANOPIA));
+            currentFilter = new ColorMatrixColorFilter(TRITANOPIA);
         } else if (gray.isChecked()) {
-            imgAfter.setColorFilter(new ColorMatrixColorFilter(GRAYSCALE));
+            currentFilter = new ColorMatrixColorFilter(GRAYSCALE);
         } else if (invert.isChecked()) {
-            imgAfter.setColorFilter(new ColorMatrixColorFilter(INVERTED));
+            currentFilter = new ColorMatrixColorFilter(INVERTED);
         } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
-            imgAfter.getDrawable().clearColorFilter();
+            currentFilter = new ColorMatrixColorFilter(defaultFilter);
         }  else if (custom.isChecked()) {
-            imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
+            currentFilter = new ColorMatrixColorFilter(customFilter);
         } else {
-            imgAfter.getDrawable().clearColorFilter();
+            currentFilter = new ColorMatrixColorFilter(defaultFilter);
         }
+        imgAfter.setColorFilter(currentFilter);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -212,7 +287,7 @@ public class Filters extends AppCompatActivity {
                 imgAfter.setImageURI(data.getData());
                 onClick(imgAfter);
                 imgBefore.setImageURI(data.getData());
-                imgBefore.clearColorFilter();
+                imgBefore.setColorFilter(new ColorMatrixColorFilter(defaultFilter));
             }
         }
 

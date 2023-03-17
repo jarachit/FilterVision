@@ -13,6 +13,17 @@
         android:layout_height="wrap_content"
         tools:ignore="ExtraText">
 
+        <Button
+            android:id="@+id/revert_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:onClick="revertFilter"
+            android:text="@string/revert"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -23,7 +34,7 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/revert_filter" />
 
         <RadioGroup
             android:id="@+id/button_group"
