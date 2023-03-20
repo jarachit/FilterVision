@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:text="@string/red_slider"
+            app:layout_constraintBottom_toTopOf="@id/green_number"
             app:layout_constraintRight_toLeftOf="@id/red_slider"
             app:layout_constraintStart_toStartOf="@id/button_group"
             app:layout_constraintTop_toBottomOf="@id/button_group" />
@@ -146,8 +147,20 @@
             android:buttonTint="@color/purple_700"
             android:max="255"
             android:progress="0"
+            app:layout_constraintBottom_toTopOf="@id/green_number"
             app:layout_constraintLeft_toRightOf="@id/textView2"
-            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/red_number"
+            app:layout_constraintTop_toBottomOf="@id/button_group" />
+
+        <EditText
+            android:id="@+id/red_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="35dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@id/green_number"
+            app:layout_constraintLeft_toRightOf="@+id/red_slider"
             app:layout_constraintTop_toBottomOf="@id/button_group" />
 
         <TextView
@@ -156,9 +169,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:text="@string/green_slider"
+            app:layout_constraintBottom_toTopOf="@id/blue_number"
             app:layout_constraintRight_toLeftOf="@+id/green_slider"
             app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@+id/red_slider" />
+            app:layout_constraintTop_toBottomOf="@+id/red_number" />
 
         <SeekBar
             android:id="@+id/green_slider"
@@ -169,9 +183,21 @@
             android:buttonTint="@color/purple_700"
             android:max="255"
             android:progress="0"
+            app:layout_constraintBottom_toTopOf="@id/blue_number"
             app:layout_constraintLeft_toRightOf="@id/textView3"
-            app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/red_slider" />
+            app:layout_constraintRight_toLeftOf="@id/green_number"
+            app:layout_constraintTop_toBottomOf="@id/red_number" />
+
+        <EditText
+            android:id="@+id/green_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="35dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@id/blue_number"
+            app:layout_constraintLeft_toRightOf="@+id/green_slider"
+            app:layout_constraintTop_toBottomOf="@id/red_number" />
 
         <TextView
             android:id="@+id/textView4"
@@ -179,9 +205,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:text="@string/blue_slider"
+            app:layout_constraintBottom_toTopOf="@id/apply_filter"
             app:layout_constraintRight_toLeftOf="@+id/blue_slider"
             app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@+id/green_slider" />
+            app:layout_constraintTop_toBottomOf="@+id/green_number" />
 
         <SeekBar
             android:id="@+id/blue_slider"
@@ -192,9 +219,21 @@
             android:buttonTint="@color/purple_700"
             android:max="255"
             android:progress="0"
+            app:layout_constraintBottom_toTopOf="@id/apply_filter"
             app:layout_constraintLeft_toRightOf="@id/textView4"
-            app:layout_constraintRight_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/green_slider" />
+            app:layout_constraintRight_toLeftOf="@id/blue_number"
+            app:layout_constraintTop_toBottomOf="@id/green_number" />
+
+        <EditText
+            android:id="@+id/blue_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="35dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintBottom_toTopOf="@id/apply_filter"
+            app:layout_constraintLeft_toRightOf="@+id/blue_slider"
+            app:layout_constraintTop_toBottomOf="@id/green_number" />
 
         <Button
             android:id="@+id/apply_filter"
@@ -206,7 +245,7 @@
             android:text="@string/apply_filter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/blue_slider" />
+            app:layout_constraintTop_toBottomOf="@id/blue_number" />
 
         <ImageView
             android:id="@+id/img_before"
