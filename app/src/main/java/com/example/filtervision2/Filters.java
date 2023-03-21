@@ -8,13 +8,21 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.ColorFilter;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.graphics.PorterDuff;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.TextView;
+
 import java.util.Vector;
 
 import androidx.appcompat.widget.SwitchCompat;
@@ -112,6 +120,9 @@ public class Filters extends AppCompatActivity {
     int redVal;
     int greenVal;
     int blueVal;
+    EditText red_number;
+    EditText green_number;
+    EditText blue_number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +147,10 @@ public class Filters extends AppCompatActivity {
         imgBefore = findViewById(R.id.img_before);
         Button btnGallery = findViewById(R.id.btn_gallery);
 
+        red_number = findViewById(R.id.red_number);
+        green_number = findViewById(R.id.green_number);
+        blue_number = findViewById(R.id.blue_number);
+
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,6 +162,7 @@ public class Filters extends AppCompatActivity {
         red_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 redVal = progress;
+                red_number.setText(Integer.toString(redVal));
                 def.setChecked(false);
                 red.setChecked(false);
                 green.setChecked(false);
@@ -174,6 +190,7 @@ public class Filters extends AppCompatActivity {
         green_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 greenVal = progress;
+                green_number.setText(Integer.toString(greenVal));
                 def.setChecked(false);
                 red.setChecked(false);
                 green.setChecked(false);
@@ -200,6 +217,7 @@ public class Filters extends AppCompatActivity {
         blue_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 blueVal = progress;
+                blue_number.setText(Integer.toString(blueVal));
                 def.setChecked(false);
                 red.setChecked(false);
                 green.setChecked(false);
@@ -224,6 +242,54 @@ public class Filters extends AppCompatActivity {
 
             }
         });
+        TextView.OnEditorActionListener editingActionListener = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(red_number.getText().toString())) {
+                        redVal = 0;
+                    }
+                    else {
+                        redVal = Integer.parseInt(red_number.getText().toString());
+                    }
+                    red_slider.setProgress(redVal);
+                }
+                return true;
+            }
+        };
+        red_number.setOnEditorActionListener(editingActionListener);
+        TextView.OnEditorActionListener editingActionListener2 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(green_number.getText().toString())) {
+                        greenVal = 0;
+                    }
+                    else {
+                        greenVal = Integer.parseInt(green_number.getText().toString());
+                    }
+                    green_slider.setProgress(greenVal);
+                }
+                return true;
+            }
+        };
+        green_number.setOnEditorActionListener(editingActionListener2);
+        TextView.OnEditorActionListener editingActionListener3 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(blue_number.getText().toString())) {
+                        blueVal = 0;
+                    }
+                    else {
+                        blueVal = Integer.parseInt(blue_number.getText().toString());
+                    }
+                    blue_slider.setProgress(blueVal);
+                }
+                return true;
+            }
+        };
+        blue_number.setOnEditorActionListener(editingActionListener3);
     }
 
     public void applyFilter(View view) {
