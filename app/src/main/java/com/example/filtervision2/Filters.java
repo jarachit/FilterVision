@@ -37,9 +37,9 @@ public class Filters extends AppCompatActivity {
     };
 
     private static final float[] GRAYSCALE = {
-            0.3F, 0.59F, 0.11F, 0F, 0,
-            0.3F, 0.59F, 0.11F, 0F, 0,
-            0.3F, 0.59F, 0.11F, 0F, 0,
+            0.33F, 0.33F, 0.33F, 0F, 0,
+            0.33F, 0.33F, 0.33F, 0F, 0,
+            0.33F, 0.33F, 0.33F, 0F, 0,
             0F, 0F, 0F, 1F, 0,
     };
     private static final float[] PROTANOPIA = {
@@ -69,22 +69,22 @@ public class Filters extends AppCompatActivity {
             0, 0, 0, 1, 0,
     };
     private static final float[] redFilter = {
-            1, 0, 0, 0, 0,
-            0, 0.447F, 0, 0, 0,
-            0, 0, 0.463F, 0, 0,
+            1, 1, 1, 0, 0,
+            0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0,
             0, 0, 0, 1, 0,
     };
     private static final float[] greenFilter = {
-            0.004F, 0, 0, 0, 0,
-            0, 0.53F, 0, 0, 0,
-            0, 0, 0.5255F, 0, 0,
+            0, 0, 0, 0, 0,
+            1, 1, 1, 0, 0,
+            0, 0, 0, 0, 0,
             0, 0, 0, 1, 0,
     };
 //    FF3700B3
     private static final float[] blueFilter = {
-            0.2157F, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
-            0, 0, 0.702F, 0, 0,
+            0, 0, 0, 0, 0,
+            1, 1, 1, 0, 0,
             0, 0, 0, 1, 0,
     };
     private float[] customFilter = {
