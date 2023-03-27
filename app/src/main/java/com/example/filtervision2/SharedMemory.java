@@ -46,7 +46,6 @@ public class SharedMemory {
     }
 
     public int getColor() {
-//        return Color.rgb(getRed(), getGreen(), getBlue());
         return Color.argb(getAlpha(), getRed(), getGreen(), getBlue());
     }
 }

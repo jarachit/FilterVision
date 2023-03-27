@@ -183,7 +183,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
             android:text="@string/blue_slider"
-            app:layout_constraintBottom_toTopOf="@id/apply_filter"
+            app:layout_constraintBottom_toTopOf="@id/alpha_slider"
             app:layout_constraintRight_toLeftOf="@+id/blue_slider"
             app:layout_constraintStart_toStartOf="@id/button_group"
             app:layout_constraintTop_toBottomOf="@+id/green_number" />
@@ -197,7 +197,7 @@
             android:buttonTint="@color/purple_700"
             android:max="255"
             android:progress="0"
-            app:layout_constraintBottom_toTopOf="@id/apply_filter"
+            app:layout_constraintBottom_toTopOf="@id/alpha_slider"
             app:layout_constraintLeft_toRightOf="@id/textView4"
             app:layout_constraintRight_toLeftOf="@id/blue_number"
             app:layout_constraintTop_toBottomOf="@id/green_number" />
@@ -210,9 +210,45 @@
             android:ems="10"
             android:inputType="number"
             android:imeOptions="actionDone"
-            app:layout_constraintBottom_toTopOf="@id/apply_filter"
+            app:layout_constraintBottom_toTopOf="@id/alpha_number"
             app:layout_constraintLeft_toRightOf="@+id/blue_slider"
             app:layout_constraintTop_toBottomOf="@id/green_number" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:text="A"
+            app:layout_constraintBottom_toTopOf="@id/apply_filter"
+            app:layout_constraintRight_toLeftOf="@+id/alpha_slider"
+            app:layout_constraintStart_toStartOf="@id/button_group"
+            app:layout_constraintTop_toBottomOf="@+id/blue_number" />
+        <SeekBar
+            android:id="@+id/alpha_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="75dp"
+            android:buttonTint="@color/purple_700"
+            android:max="255"
+            android:progress="125"
+            app:layout_constraintBottom_toTopOf="@id/apply_filter"
+            app:layout_constraintLeft_toRightOf="@id/textView5"
+            app:layout_constraintRight_toLeftOf="@id/alpha_number"
+            app:layout_constraintTop_toBottomOf="@id/blue_number" />
+
+        <EditText
+            android:id="@+id/alpha_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="40dp"
+            android:ems="10"
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            app:layout_constraintBottom_toTopOf="@id/apply_filter"
+            app:layout_constraintLeft_toRightOf="@+id/alpha_slider"
+            app:layout_constraintTop_toBottomOf="@id/blue_number" />
 
         <Button
             android:id="@+id/apply_filter"
@@ -224,7 +260,7 @@
             android:text="@string/apply_filter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/blue_number" />
+            app:layout_constraintTop_toBottomOf="@id/alpha_number" />
         <ImageView
             android:id="@+id/img_before"
             android:layout_width="195dp"

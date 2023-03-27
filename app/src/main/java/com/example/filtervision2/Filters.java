@@ -36,7 +36,7 @@ import androidx.appcompat.widget.AppCompatSeekBar;
 public class Filters extends AppCompatActivity {
     private SharedMemory mSharedMemory;
     private ToggleButton mToggleButton;
-    public static int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 5469;
+
     private static final float[] INVERTED = {
             -1F, 0, 0, 0, 255F,
             0, -1F, 0, 0, 255F,
@@ -122,15 +122,18 @@ public class Filters extends AppCompatActivity {
     SeekBar red_slider;
     SeekBar green_slider;
     SeekBar blue_slider;
+    SeekBar alpha_slider;///
     private final int GALLERY_REQ_CODE = 1;
     ImageView imgAfter;
     ImageView imgBefore;
     int redVal;
     int greenVal;
     int blueVal;
+    int alphaVal;
     EditText red_number;
     EditText green_number;
     EditText blue_number;
+    EditText alpha_number; ////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,6 +159,7 @@ public class Filters extends AppCompatActivity {
         red_number = findViewById(R.id.red_number);
         green_number = findViewById(R.id.green_number);
         blue_number = findViewById(R.id.blue_number);
+        alpha_number = findViewById(R.id.alpha_number); ////
 
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +173,7 @@ public class Filters extends AppCompatActivity {
         red_slider = findViewById(R.id.red_slider);
         green_slider = findViewById(R.id.green_slider);
         blue_slider = findViewById(R.id.blue_slider);
+        alpha_slider = findViewById(R.id.alpha_slider); ////
         //
         mToggleButton = findViewById(R.id.start_button);
         mSharedMemory = new SharedMemory(this);
@@ -212,7 +217,7 @@ public class Filters extends AppCompatActivity {
                 invert.setChecked(false);
                 custom.setChecked(true);
                 //
-                mSharedMemory.setAlpha(125);
+                mSharedMemory.setAlpha(alpha_slider.getProgress());
                 mSharedMemory.setRed(red_slider.getProgress());
                 mSharedMemory.setGreen(green_slider.getProgress());
                 mSharedMemory.setBlue(blue_slider.getProgress());
@@ -226,6 +231,7 @@ public class Filters extends AppCompatActivity {
                 customFilter[0] = (float) red_slider.getProgress() / 255;
                 customFilter[6] = (float) green_slider.getProgress() / 255;
                 customFilter[12] = (float) blue_slider.getProgress() / 255;
+                customFilter[18] = (float) alpha_slider.getProgress() / 255;
                 imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
                 currentFilter = new ColorMatrixColorFilter(customFilter);
             }
@@ -252,7 +258,7 @@ public class Filters extends AppCompatActivity {
                 invert.setChecked(false);
                 custom.setChecked(true);
                 //
-                mSharedMemory.setAlpha(125);
+                mSharedMemory.setAlpha(alpha_slider.getProgress());
                 mSharedMemory.setRed(red_slider.getProgress());
                 mSharedMemory.setGreen(green_slider.getProgress());
                 mSharedMemory.setBlue(blue_slider.getProgress());
@@ -266,6 +272,7 @@ public class Filters extends AppCompatActivity {
                 customFilter[0] = (float) red_slider.getProgress() / 255;
                 customFilter[6] = (float) green_slider.getProgress() / 255;
                 customFilter[12] = (float) blue_slider.getProgress() / 255;
+                customFilter[18] = (float) alpha_slider.getProgress() / 255;
                 imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
                 currentFilter = new ColorMatrixColorFilter(customFilter);
             }
@@ -291,7 +298,7 @@ public class Filters extends AppCompatActivity {
                 invert.setChecked(false);
                 custom.setChecked(true);
                 //
-                mSharedMemory.setAlpha(125);
+                mSharedMemory.setAlpha(alpha_slider.getProgress());
                 mSharedMemory.setRed(red_slider.getProgress());
                 mSharedMemory.setGreen(green_slider.getProgress());
                 mSharedMemory.setBlue(blue_slider.getProgress());
@@ -305,10 +312,52 @@ public class Filters extends AppCompatActivity {
                 customFilter[0] = (float) red_slider.getProgress() / 255;
                 customFilter[6] = (float) green_slider.getProgress() / 255;
                 customFilter[12] = (float) blue_slider.getProgress() / 255;
+                customFilter[18] = (float) alpha_slider.getProgress() / 255;
                 imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
 //                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
                 currentFilter = new ColorMatrixColorFilter(customFilter);
             }
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        alpha_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                alphaVal = progress;
+                alpha_number.setText(Integer.toString(alphaVal));
+                def.setChecked(false);
+                //red.setChecked(false);
+                //green.setChecked(false);
+                //blue.setChecked(false);
+                protan.setChecked(false);
+                deuteran.setChecked(false);
+                tritan.setChecked(false);
+                gray.setChecked(false);
+                invert.setChecked(false);
+                custom.setChecked(true);
+                //
+                mSharedMemory.setAlpha(alpha_slider.getProgress());
+                mSharedMemory.setRed(red_slider.getProgress());
+                mSharedMemory.setGreen(green_slider.getProgress());
+                mSharedMemory.setBlue(blue_slider.getProgress());
+
+                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
+                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
+                    startService(i);
+                }
+                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
+                //
+                customFilter[0] = (float) red_slider.getProgress() / 255;
+                customFilter[6] = (float) green_slider.getProgress() / 255;
+                customFilter[12] = (float) blue_slider.getProgress() / 255;
+                customFilter[18] = (float) alpha_slider.getProgress() / 255;
+                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
+                currentFilter = new ColorMatrixColorFilter(customFilter);
+            }
+
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
@@ -365,6 +414,22 @@ public class Filters extends AppCompatActivity {
         };
         blue_number.setOnEditorActionListener(editingActionListener3);
 
+        TextView.OnEditorActionListener editingActionListener4 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(alpha_number.getText().toString())) {
+                        alphaVal = 255;
+                    }
+                    else {
+                        alphaVal = Integer.parseInt(alpha_number.getText().toString());
+                    }
+                    alpha_slider.setProgress(alphaVal);
+                }
+                return true;
+            }
+        };
+        alpha_number.setOnEditorActionListener(editingActionListener4);
         mToggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -389,7 +454,6 @@ public class Filters extends AppCompatActivity {
         if (previousFilters.size() > 10) {
             previousFilters.remove(0);
         }
-        //Implement apply to whole screen
     }
     public void revertFilter(View view) {
         if (previousFilters.isEmpty()) {
@@ -420,7 +484,7 @@ public class Filters extends AppCompatActivity {
             currentFilter = new ColorMatrixColorFilter(GRAYSCALE);
         } else if (invert.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(INVERTED);
-        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0) {
+        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0 && alpha_slider.getProgress() == 125) {
             currentFilter = new ColorMatrixColorFilter(defaultFilter);
         }  else if (custom.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(customFilter);
