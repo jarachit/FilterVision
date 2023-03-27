@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.ColorFilter;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -21,14 +24,19 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Button;
 import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import java.util.Vector;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.AppCompatSeekBar;
 public class Filters extends AppCompatActivity {
-
+    private SharedMemory mSharedMemory;
+    private ToggleButton mToggleButton;
+    public static int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 5469;
     private static final float[] INVERTED = {
             -1F, 0, 0, 0, 255F,
             0, -1F, 0, 0, 255F,
@@ -127,6 +135,7 @@ public class Filters extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filters);
+
         def = findViewById(R.id.default_button);
         def.setChecked(true);
         red = findViewById(R.id.red_button);
@@ -139,9 +148,6 @@ public class Filters extends AppCompatActivity {
         invert = findViewById(R.id.invert);
         custom = findViewById(R.id.custom_button);
 
-        red_slider = findViewById(R.id.red_slider);
-        green_slider = findViewById(R.id.green_slider);
-        blue_slider = findViewById(R.id.blue_slider);
 
         imgAfter = findViewById(R.id.img_after);
         imgBefore = findViewById(R.id.img_before);
@@ -159,6 +165,38 @@ public class Filters extends AppCompatActivity {
                 startActivityForResult(iGallery, GALLERY_REQ_CODE);
             }
         });
+
+        red_slider = findViewById(R.id.red_slider);
+        green_slider = findViewById(R.id.green_slider);
+        blue_slider = findViewById(R.id.blue_slider);
+        //
+        mToggleButton = findViewById(R.id.start_button);
+        mSharedMemory = new SharedMemory(this);
+        //
+//        SeekBar.OnSeekBarChangeListener changeListener = new SeekBar.OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                mSharedMemory.setAlpha(0);
+//                mSharedMemory.setRed(red_slider.getProgress());
+//                mSharedMemory.setGreen(green_slider.getProgress());
+//                mSharedMemory.setBlue(blue_slider.getProgress());
+//
+//                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
+//                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
+//                    startService(i);
+//                }
+//                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_INACTIVE);
+//            }
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//
+//        };
         red_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 redVal = progress;
@@ -173,6 +211,18 @@ public class Filters extends AppCompatActivity {
                 gray.setChecked(false);
                 invert.setChecked(false);
                 custom.setChecked(true);
+                //
+//                mSharedMemory.setAlpha(0);
+                mSharedMemory.setRed(red_slider.getProgress());
+                mSharedMemory.setGreen(green_slider.getProgress());
+                mSharedMemory.setBlue(blue_slider.getProgress());
+
+                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
+                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
+                    startService(i);
+                }
+                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
+                //
                 customFilter[0] = (float) red_slider.getProgress() / 255;
                 customFilter[6] = (float) green_slider.getProgress() / 255;
                 customFilter[12] = (float) blue_slider.getProgress() / 255;
@@ -201,6 +251,18 @@ public class Filters extends AppCompatActivity {
                 gray.setChecked(false);
                 invert.setChecked(false);
                 custom.setChecked(true);
+                //
+//                mSharedMemory.setAlpha(0);
+                mSharedMemory.setRed(red_slider.getProgress());
+                mSharedMemory.setGreen(green_slider.getProgress());
+                mSharedMemory.setBlue(blue_slider.getProgress());
+
+                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
+                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
+                    startService(i);
+                }
+                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
+                //
                 customFilter[0] = (float) red_slider.getProgress() / 255;
                 customFilter[6] = (float) green_slider.getProgress() / 255;
                 customFilter[12] = (float) blue_slider.getProgress() / 255;
@@ -228,6 +290,18 @@ public class Filters extends AppCompatActivity {
                 gray.setChecked(false);
                 invert.setChecked(false);
                 custom.setChecked(true);
+                //
+//                mSharedMemory.setAlpha(0);
+                mSharedMemory.setRed(red_slider.getProgress());
+                mSharedMemory.setGreen(green_slider.getProgress());
+                mSharedMemory.setBlue(blue_slider.getProgress());
+
+                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
+                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
+                    startService(i);
+                }
+                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
+                //
                 customFilter[0] = (float) red_slider.getProgress() / 255;
                 customFilter[6] = (float) green_slider.getProgress() / 255;
                 customFilter[12] = (float) blue_slider.getProgress() / 255;
@@ -290,6 +364,19 @@ public class Filters extends AppCompatActivity {
             }
         };
         blue_number.setOnEditorActionListener(editingActionListener3);
+
+        mToggleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Filters.this, ScreenFilterService.class);
+                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
+                    stopService(i);
+                } else {
+                    startService(i);
+                }
+
+            }
+        });
     }
 
     public void applyFilter(View view) {
@@ -342,6 +429,8 @@ public class Filters extends AppCompatActivity {
         }
         imgAfter.setColorFilter(currentFilter);
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
