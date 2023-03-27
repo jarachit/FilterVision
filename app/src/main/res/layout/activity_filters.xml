@@ -54,30 +54,6 @@
                 android:text="@string/default_button" />
 
             <RadioButton
-                android:id="@+id/red_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/red_button" />
-
-            <RadioButton
-                android:id="@+id/green_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/green_button" />
-
-            <RadioButton
-                android:id="@+id/blue_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/blue_button" />
-
-            <RadioButton
                 android:id="@+id/protan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
