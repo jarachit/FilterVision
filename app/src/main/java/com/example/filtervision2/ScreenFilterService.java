@@ -4,7 +4,10 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.net.Uri;
+import android.os.Build;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -35,6 +38,13 @@ public class ScreenFilterService extends Service {
     public void onCreate() {
         super.onCreate();
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!android.provider.Settings.canDrawOverlays(ScreenFilterService.this)) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
+            }
+        }
         mSharedMemory = new SharedMemory(this);
         mView = new LinearLayout(this);
         mView.setBackgroundColor(mSharedMemory.getColor());
@@ -43,13 +53,14 @@ public class ScreenFilterService extends Service {
                 WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 PixelFormat.TRANSLUCENT
         );
         WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         assert windowManager != null;
         windowManager.addView(mView, layoutParams);
         STATE = STATE_ACTIVE;
+
     }
 
     @Override

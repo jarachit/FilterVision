@@ -212,7 +212,7 @@ public class Filters extends AppCompatActivity {
                 invert.setChecked(false);
                 custom.setChecked(true);
                 //
-//                mSharedMemory.setAlpha(0);
+                mSharedMemory.setAlpha(125);
                 mSharedMemory.setRed(red_slider.getProgress());
                 mSharedMemory.setGreen(green_slider.getProgress());
                 mSharedMemory.setBlue(blue_slider.getProgress());
@@ -252,7 +252,7 @@ public class Filters extends AppCompatActivity {
                 invert.setChecked(false);
                 custom.setChecked(true);
                 //
-//                mSharedMemory.setAlpha(0);
+                mSharedMemory.setAlpha(125);
                 mSharedMemory.setRed(red_slider.getProgress());
                 mSharedMemory.setGreen(green_slider.getProgress());
                 mSharedMemory.setBlue(blue_slider.getProgress());
@@ -291,7 +291,7 @@ public class Filters extends AppCompatActivity {
                 invert.setChecked(false);
                 custom.setChecked(true);
                 //
-//                mSharedMemory.setAlpha(0);
+                mSharedMemory.setAlpha(125);
                 mSharedMemory.setRed(red_slider.getProgress());
                 mSharedMemory.setGreen(green_slider.getProgress());
                 mSharedMemory.setBlue(blue_slider.getProgress());
