@@ -88,7 +88,7 @@ public class Filters extends AppCompatActivity {
             0, 0, 0, 0, 0,
             0, 0, 0, 1, 0,
     };
-//    FF3700B3
+
     private static final float[] blueFilter = {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
@@ -138,9 +138,9 @@ public class Filters extends AppCompatActivity {
 
         def = findViewById(R.id.default_button);
         def.setChecked(true);
-        red = findViewById(R.id.red_button);
-        green = findViewById(R.id.green_button);
-        blue = findViewById(R.id.blue_button);
+        //red = findViewById(R.id.red_button);
+        //green = findViewById(R.id.green_button);
+        //blue = findViewById(R.id.blue_button);
         protan = findViewById(R.id.protan);
         deuteran = findViewById(R.id.deuteran);
         tritan = findViewById(R.id.tritan);
@@ -202,9 +202,9 @@ public class Filters extends AppCompatActivity {
                 redVal = progress;
                 red_number.setText(Integer.toString(redVal));
                 def.setChecked(false);
-                red.setChecked(false);
-                green.setChecked(false);
-                blue.setChecked(false);
+                //red.setChecked(false);
+                //green.setChecked(false);
+                //blue.setChecked(false);
                 protan.setChecked(false);
                 deuteran.setChecked(false);
                 tritan.setChecked(false);
@@ -242,9 +242,9 @@ public class Filters extends AppCompatActivity {
                 greenVal = progress;
                 green_number.setText(Integer.toString(greenVal));
                 def.setChecked(false);
-                red.setChecked(false);
-                green.setChecked(false);
-                blue.setChecked(false);
+                //red.setChecked(false);
+                //green.setChecked(false);
+                //blue.setChecked(false);
                 protan.setChecked(false);
                 deuteran.setChecked(false);
                 tritan.setChecked(false);
@@ -281,9 +281,9 @@ public class Filters extends AppCompatActivity {
                 blueVal = progress;
                 blue_number.setText(Integer.toString(blueVal));
                 def.setChecked(false);
-                red.setChecked(false);
-                green.setChecked(false);
-                blue.setChecked(false);
+                //red.setChecked(false);
+                //green.setChecked(false);
+                //blue.setChecked(false);
                 protan.setChecked(false);
                 deuteran.setChecked(false);
                 tritan.setChecked(false);
@@ -404,13 +404,13 @@ public class Filters extends AppCompatActivity {
     public void onClick(View view) {
         if (def.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(defaultFilter);
-        } else if (red.isChecked()) {
+        } /*else if (red.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(redFilter);
         } else if (green.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(greenFilter);
         } else if (blue.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(blueFilter);
-        } else if (protan.isChecked()) {
+        } */else if (protan.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(PROTANOPIA);
         } else if (deuteran.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(DEUTERANOPIA);
