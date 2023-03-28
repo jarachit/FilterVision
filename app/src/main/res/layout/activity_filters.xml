@@ -5,6 +5,7 @@
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#ededed"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,37 +14,60 @@
         android:layout_height="wrap_content"
         tools:ignore="ExtraText">
 
-        <Button
-            android:id="@+id/revert_filter"
+        <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:onClick="revertFilter"
-            android:text="@string/revert"
+            android:layout_height="267dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/box" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="568dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/color_filter"
-            android:textColor="@color/black"
-            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@+id/button_group"
+            app:srcCompat="@drawable/box" />
+
+        <Button
+            android:id="@+id/apply_filter"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="applyFilter"
+            android:text="@string/apply_filter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_after" />
+
+        <Button
+            android:id="@+id/revert_filter"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:onClick="revertFilter"
+            android:text="@string/revert"
+            app:layout_constraintEnd_toStartOf="@+id/apply_filter"
+            app:layout_constraintHorizontal_bias="0.16"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/revert_filter" />
+            app:layout_constraintTop_toBottomOf="@+id/img_before" />
 
         <RadioGroup
             android:id="@+id/button_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.04">
 
             <RadioButton
                 android:id="@+id/default_button"
@@ -107,226 +131,195 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
+            android:layout_marginBottom="24dp"
             android:text="@string/red_slider"
-            app:layout_constraintBottom_toTopOf="@id/green_number"
-            app:layout_constraintRight_toLeftOf="@id/red_slider"
-            app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@id/button_group" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toStartOf="@+id/red_slider"
+            app:layout_constraintHorizontal_bias="0.516"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <SeekBar
             android:id="@+id/red_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="75dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:buttonTint="@color/purple_700"
             android:max="255"
             android:progress="0"
-            app:layout_constraintBottom_toTopOf="@id/green_number"
-            app:layout_constraintLeft_toRightOf="@id/textView2"
-            app:layout_constraintRight_toLeftOf="@id/red_number"
-            app:layout_constraintTop_toBottomOf="@id/button_group" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="634dp" />
 
         <EditText
             android:id="@+id/red_number"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:width="40dp"
             android:ems="10"
-            android:inputType="number"
             android:imeOptions="actionDone"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/red_slider"
             app:layout_constraintBottom_toTopOf="@id/green_number"
-            app:layout_constraintLeft_toRightOf="@+id/red_slider"
-            app:layout_constraintTop_toBottomOf="@id/button_group" />
+            tools:layout_editor_absoluteY="634dp" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="28dp"
             android:text="@string/green_slider"
-            app:layout_constraintBottom_toTopOf="@id/blue_number"
-            app:layout_constraintRight_toLeftOf="@+id/green_slider"
-            app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@+id/red_number" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toStartOf="@+id/green_slider"
+            app:layout_constraintHorizontal_bias="0.587"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <SeekBar
             android:id="@+id/green_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="75dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:buttonTint="@color/purple_700"
             android:max="255"
             android:progress="0"
-            app:layout_constraintBottom_toTopOf="@id/blue_number"
-            app:layout_constraintLeft_toRightOf="@id/textView3"
-            app:layout_constraintRight_toLeftOf="@id/green_number"
-            app:layout_constraintTop_toBottomOf="@id/red_number" />
-
-        <EditText
-            android:id="@+id/green_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:width="40dp"
-            android:ems="10"
-            android:inputType="number"
-            android:imeOptions="actionDone"
-            app:layout_constraintBottom_toTopOf="@id/blue_number"
-            app:layout_constraintLeft_toRightOf="@+id/green_slider"
-            app:layout_constraintTop_toBottomOf="@id/red_number" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/red_slider" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
+            android:layout_marginBottom="24dp"
             android:text="@string/blue_slider"
-            app:layout_constraintBottom_toTopOf="@id/alpha_slider"
-            app:layout_constraintRight_toLeftOf="@+id/blue_slider"
-            app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@+id/green_number" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
+            app:layout_constraintEnd_toStartOf="@+id/blue_slider"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <SeekBar
             android:id="@+id/blue_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="75dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:buttonTint="@color/purple_700"
             android:max="255"
             android:progress="0"
-            app:layout_constraintBottom_toTopOf="@id/alpha_slider"
-            app:layout_constraintLeft_toRightOf="@id/textView4"
-            app:layout_constraintRight_toLeftOf="@id/blue_number"
-            app:layout_constraintTop_toBottomOf="@id/green_number" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/green_slider" />
 
         <EditText
             android:id="@+id/blue_number"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:width="40dp"
             android:ems="10"
-            android:inputType="number"
             android:imeOptions="actionDone"
-            app:layout_constraintBottom_toTopOf="@id/alpha_number"
-            app:layout_constraintLeft_toRightOf="@+id/blue_slider"
-            app:layout_constraintTop_toBottomOf="@id/green_number" />
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toEndOf="@+id/blue_slider"
+            app:layout_constraintBottom_toTopOf="@+id/alpha_number"
+            tools:layout_editor_absoluteY="734dp" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
+            android:layout_marginBottom="8dp"
             android:text="A"
-            app:layout_constraintBottom_toTopOf="@id/apply_filter"
-            app:layout_constraintRight_toLeftOf="@+id/alpha_slider"
-            app:layout_constraintStart_toStartOf="@id/button_group"
-            app:layout_constraintTop_toBottomOf="@+id/blue_number" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/alpha_slider"
+            app:layout_constraintEnd_toStartOf="@+id/alpha_slider"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <SeekBar
             android:id="@+id/alpha_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="75dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:buttonTint="@color/purple_700"
             android:max="255"
-            android:progress="125"
-            app:layout_constraintBottom_toTopOf="@id/apply_filter"
-            app:layout_constraintLeft_toRightOf="@id/textView5"
-            app:layout_constraintRight_toLeftOf="@id/alpha_number"
-            app:layout_constraintTop_toBottomOf="@id/blue_number" />
+            android:progress="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/blue_slider" />
 
         <EditText
             android:id="@+id/alpha_number"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:width="40dp"
             android:ems="10"
-            android:inputType="number"
             android:imeOptions="actionDone"
-            app:layout_constraintBottom_toTopOf="@id/apply_filter"
-            app:layout_constraintLeft_toRightOf="@+id/alpha_slider"
-            app:layout_constraintTop_toBottomOf="@id/blue_number" />
-
-        <Button
-            android:id="@+id/apply_filter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:onClick="applyFilter"
-            android:text="@string/apply_filter"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/alpha_slider"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/alpha_number" />
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toEndOf="@+id/alpha_slider" />
+
         <ImageView
             android:id="@+id/img_before"
             android:layout_width="195dp"
             android:layout_height="155dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/image_content_description"
-            app:layout_constraintStart_toStartOf="@id/apply_filter"
-            app:layout_constraintTop_toBottomOf="@id/apply_filter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/mountains" />
 
         <ImageView
             android:id="@+id/img_after"
             android:layout_width="195dp"
             android:layout_height="155dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="@string/image_content_description"
-            app:layout_constraintEnd_toEndOf="@id/apply_filter"
-            app:layout_constraintTop_toBottomOf="@id/apply_filter"
-            app:srcCompat="@drawable/mountains" />
-<!--        <RadioGroup-->
-<!--            android:id="@+id/button_group2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/img_gallery">-->
-
-<!--            <RadioButton-->
-<!--                android:id="@+id/select_image1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/palm_tree_select"-->
-<!--                android:buttonTint="@color/purple_700"-->
-<!--                android:textAlignment="textStart"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/image" />-->
-
-<!--            <RadioButton-->
-<!--                android:id="@+id/select_image2"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/mountains_select"-->
-<!--                android:buttonTint="@color/purple_700"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/select_image1" />-->
-
-<!--        </RadioGroup>-->
-
-        <Button
-            android:id="@+id/btn_gallery"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="Open Gallery"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/img_before"
-            app:layout_constraintTop_toBottomOf="@id/img_before" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/img_before"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountains" />
 
         <ToggleButton
             android:id="@+id/start_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
             android:textOff="Apply to Phone Screen"
             android:textOn="Off"
-            app:layout_constraintTop_toBottomOf="@id/btn_gallery" />
-<!--            app:layout_constraintBottom_toTopOf="@id/btn_gallery"/>-->
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <EditText
+            android:id="@+id/green_number"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:width="40dp"
+            android:ems="10"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/green_slider"
+            app:layout_constraintBottom_toTopOf="@+id/blue_number"
+            tools:layout_editor_absoluteY="683dp" />
+
+        <Button
+            android:id="@+id/btn_gallery"
+            android:layout_width="380dp"
+            android:layout_height="45dp"
+            android:text="Open Gallery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.451"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/apply_filter" />
+        <!--            app:layout_constraintBottom_toTopOf="@id/btn_gallery"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
