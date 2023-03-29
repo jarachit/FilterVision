@@ -26,4 +26,6 @@
     <string name="blue_button">Blue</string>
     <string name="custom_button">Custom</string>
     <string name="revert">Revert</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

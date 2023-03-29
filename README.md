@@ -5,7 +5,8 @@ FilterVision is an Android application that allows the user to change the color 
 ## Installation
 
 Install the latest version of the Android Studio IDE here: https://developer.android.com/studio
-(If you wish to open this on a phone without Android Studio, see "Alternate Options".)
+
+**(If you wish to open this on a phone without Android Studio, see "Alternate Options".)**
 
 Once inside Android Studio, select the "Get from VCS" option listed. ![image](/uploads/9e1fe9907c79a024f70eb05eede050c2/image.png)
 
@@ -34,13 +35,6 @@ Finally, return to the project page. On the top right, select a device, then run
 
 ![image](/uploads/d201490bb8cd9f473eeb92c507458504/image.png)
 
-The main screen should look like this:
-
-![image](/uploads/459058cdf26a516e52a7b85aba843e17/image.png)
-
-Only the "Filters" section is currently implemented.
-
-![image](/uploads/b4cadd6cf197207d2d2767088a019c91/image.png)
 
 ## Alternate Options
 Open the app-release.apk file and download it on your Android phone (On an Apple phone, you will need to download an application that opens .apk files). If your phone requests permission from system settings, allow them, and continue to download the file.
