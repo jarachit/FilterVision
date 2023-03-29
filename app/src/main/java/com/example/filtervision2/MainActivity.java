@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.test: i = new Intent(this, Test.class); startActivity(i); break ;
             case R.id.tutorial: i = new Intent(this, Tutorial.class); startActivity(i); break ;
             case R.id.presets: i = new Intent(this, Test.class); startActivity(i); break ;
-            case R.id.settings: i = new Intent(this, Tutorial.class); startActivity(i); break ;
+            case R.id.settings: i = new Intent(this, Test.class); startActivity(i); break ;
             default:break ;
         }
     }

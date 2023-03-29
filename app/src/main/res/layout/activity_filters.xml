@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#ededed"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:ignore="ExtraText">
 
         <ImageView
@@ -27,10 +27,10 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="568dp"
+            android:layout_height="550dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button_group"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button_group"
             app:srcCompat="@drawable/box" />
 
         <Button
@@ -69,6 +69,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:layout_constraintVertical_bias="0.04">
+
+            <RadioButton
+                android:id="@+id/custom_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_700"
+                android:onClick="onClick"
+                android:text="@string/custom_button" />
 
             <RadioButton
                 android:id="@+id/default_button"
@@ -118,14 +126,6 @@
                 android:onClick="onClick"
                 android:text="Inverted" />
 
-            <RadioButton
-                android:id="@+id/custom_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_700"
-                android:onClick="onClick"
-                android:text="@string/custom_button" />
-
         </RadioGroup>
 
         <TextView
@@ -144,14 +144,14 @@
             android:id="@+id/red_slider"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="28dp"
             android:buttonTint="@color/purple_700"
             android:max="255"
-            android:progress="0"
+            android:progress="255"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_group" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_gallery" />
 
         <EditText
             android:id="@+id/red_number"
@@ -185,7 +185,7 @@
             android:layout_height="50dp"
             android:buttonTint="@color/purple_700"
             android:max="255"
-            android:progress="0"
+            android:progress="255"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/red_slider" />
@@ -208,7 +208,7 @@
             android:layout_height="50dp"
             android:buttonTint="@color/purple_700"
             android:max="255"
-            android:progress="0"
+            android:progress="255"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/green_slider" />
@@ -245,7 +245,8 @@
             android:layout_height="50dp"
             android:buttonTint="@color/purple_700"
             android:max="255"
-            android:progress="0"
+            android:progress="255"
+            app:layout_constraintBottom_toTopOf="@+id/button_group"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/blue_slider" />
@@ -321,7 +322,6 @@
             app:layout_constraintHorizontal_bias="0.451"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/apply_filter" />
-        <!--            app:layout_constraintBottom_toTopOf="@id/btn_gallery"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
