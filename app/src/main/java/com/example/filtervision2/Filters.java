@@ -484,7 +484,7 @@ public class Filters extends AppCompatActivity {
             currentFilter = new ColorMatrixColorFilter(GRAYSCALE);
         } else if (invert.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(INVERTED);
-        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0 && alpha_slider.getProgress() == 125) {
+        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0 && alpha_slider.getProgress() == 0) {
             currentFilter = new ColorMatrixColorFilter(defaultFilter);
         }  else if (custom.isChecked()) {
             currentFilter = new ColorMatrixColorFilter(customFilter);

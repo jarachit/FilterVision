@@ -42,6 +42,7 @@ public class ScreenFilterService extends Service {
             if (!android.provider.Settings.canDrawOverlays(ScreenFilterService.this)) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                         Uri.parse("package:" + getPackageName()));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         }
