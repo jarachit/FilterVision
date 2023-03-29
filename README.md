@@ -3,10 +3,21 @@
 FilterVision is an Android application that allows the user to change the color of their screen.
 
 ## Installation
+Open the app-release.apk file and download it on your Android phone (On an Apple phone, you will need to download an application that opens .apk files). If your phone requests permission from system settings, allow them, and continue to download the file.
+**(If you wish to open this on a laptop using Android Studio, see "Alternate Options".)**
 
+![Screenshot_20230215_125515_Package_installer](/uploads/a16b22698696700e57ee5636149ab7b9/Screenshot_20230215_125515_Package_installer.jpg)
+
+![Screenshot_20230215_125525_Settings](/uploads/18fccb698dc985538ba3526d80fb108b/Screenshot_20230215_125525_Settings.jpg)
+
+Google Play will ask if you want to continue opening the app. Select "install anyway".
+
+![Screenshot_20230215_125601_Google_Play_Store](/uploads/52d8556744af94ec84c57751d8e86f62/Screenshot_20230215_125601_Google_Play_Store.jpg)
+
+Upon installation, open the file, and the app should open.
+
+## Alternate Options
 Install the latest version of the Android Studio IDE here: https://developer.android.com/studio
-
-**(If you wish to open this on a phone without Android Studio, see "Alternate Options".)**
 
 Once inside Android Studio, select the "Get from VCS" option listed. ![image](/uploads/9e1fe9907c79a024f70eb05eede050c2/image.png)
 
@@ -34,17 +45,3 @@ Choose a model and system OS. We recommend using the Pixel 2 on the Nougat OS (A
 Finally, return to the project page. On the top right, select a device, then run the project.
 
 ![image](/uploads/d201490bb8cd9f473eeb92c507458504/image.png)
-
-
-## Alternate Options
-Open the app-release.apk file and download it on your Android phone (On an Apple phone, you will need to download an application that opens .apk files). If your phone requests permission from system settings, allow them, and continue to download the file.
-
-![Screenshot_20230215_125515_Package_installer](/uploads/a16b22698696700e57ee5636149ab7b9/Screenshot_20230215_125515_Package_installer.jpg)
-
-![Screenshot_20230215_125525_Settings](/uploads/18fccb698dc985538ba3526d80fb108b/Screenshot_20230215_125525_Settings.jpg)
-
-Google Play will ask if you want to continue opening the app. Select "install anyway".
-
-![Screenshot_20230215_125601_Google_Play_Store](/uploads/52d8556744af94ec84c57751d8e86f62/Screenshot_20230215_125601_Google_Play_Store.jpg)
-
-Upon installation, open the file, and the app should open.
