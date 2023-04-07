@@ -29,6 +29,7 @@ import android.content.SharedPreferences;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import androidx.appcompat.widget.SwitchCompat;
@@ -43,69 +44,73 @@ public class Filters extends AppCompatActivity {
             0, 0, 1F, 0, 255F,
             0, 0, 0, 1F, 0,
     };
-
     private static final float[] GRAYSCALE = {
-            0.33F, 0.33F, 0.33F, 0F, 0,
-            0.33F, 0.33F, 0.33F, 0F, 0,
-            0.33F, 0.33F, 0.33F, 0F, 0,
-            0F, 0F, 0F, 1F, 0,
+            84, 84, 84, 0, 0,
+            84, 84, 84, 0, 0,
+            84, 84, 84, 0, 0,
+            0, 0, 0, 255, 0,
     };
     private static final float[] PROTANOPIA = {
-            0.567F, 0.433F, 0F, 0F, 0,
-            0.558F, 0.442F, 0F, 0F, 0,
-            0F, 0.242F, 0.758F, 0F, 0,
-            0F, 0F, 0F, 1F, 0,
+            145, 110, 0, 0, 0,
+            142, 113, 0, 0, 0,
+            0, 62, 193, 0, 0,
+            0, 0, 0, 255, 0,
     };
 
     private static final float[] DEUTERANOPIA = {
-            0.625F, 0.375F, 0, 0, 0,
-            0.7F, 0.3F, 0, 0, 0,
-            0, 0.3F, 0.7F, 0, 0,
-            0, 0, 0, 1, 0,
+            159, 96, 0, 0, 0,
+            179, 77, 0, 0, 0,
+            0, 77, 179, 0, 0,
+            0, 0, 0, 255, 0,
     };
 
     private static final float[] TRITANOPIA = {
-            0.95F, 0.05F, 0, 0, 0,
-            0, 0.433F, 0.567F, 0, 0,
-            0, 0.475F, 0.525F, 0, 0,
-            0, 0, 0, 1, 0,
+            242, 13, 0, 0, 0,
+            0, 110, 145, 0, 0,
+            0, 121, 134, 0, 0,
+            0, 0, 0, 255, 0,
     };
     private static final float[] defaultFilter = {
-            1, 0, 0, 0, 0,
-            0, 1, 0, 0, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 1, 0,
+            255, 0, 0, 0, 0,
+            0, 255, 0, 0, 0,
+            0, 0, 255, 0, 0,
+            0, 0, 0, 255, 0,
     };
     private static final float[] redFilter = {
-            1, 1, 1, 0, 0,
+            255, 255, 255, 0, 0,
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
-            0, 0, 0, 1, 0,
+            0, 0, 0, 255, 0,
     };
     private static final float[] greenFilter = {
             0, 0, 0, 0, 0,
-            1, 1, 1, 0, 0,
+            255, 255, 255, 0, 0,
             0, 0, 0, 0, 0,
-            0, 0, 0, 1, 0,
+            0, 0, 0, 255, 0,
     };
 
     private static final float[] blueFilter = {
             0, 0, 0, 0, 0,
             0, 0, 0, 0, 0,
-            1, 1, 1, 0, 0,
-            0, 0, 0, 1, 0,
+            255, 255, 255, 0, 0,
+            0, 0, 0, 255, 0,
     };
     private float[] customFilter = {
-            1, 0, 0, 0, 0,
-            0, 1, 0, 0, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 1, 0,
+            255, 0, 0, 0, 0,
+            0, 255, 0, 0, 0,
+            0, 0, 255, 0, 0,
+            0, 0, 0, 255, 0,
     };
 
-    private ColorMatrixColorFilter currentFilter = new ColorMatrixColorFilter(defaultFilter);
-    private ColorMatrixColorFilter prevFilter;
+    private float[] currentFilter = {
+            255, 0, 0, 0, 0,
+            0, 255, 0, 0, 0,
+            0, 0, 255, 0, 0,
+            0, 0, 0, 255, 0,
+    };
+    private float[] prevFilter;
 
-    private Vector<ColorMatrixColorFilter> previousFilters = new Vector<ColorMatrixColorFilter>();
+    private Vector<float[]> previousFilters = new Vector<float[]>();
     private boolean prevFilterExists = false;
 
     private static final int RESULT_LOAD_IMAGE = 1;
@@ -126,40 +131,51 @@ public class Filters extends AppCompatActivity {
     private final int GALLERY_REQ_CODE = 1;
     ImageView imgAfter;
     ImageView imgBefore;
-    int redVal;
-    int greenVal;
-    int blueVal;
+    int RtoRVal;
+    int RtoGVal;
+    int RtoBVal;
+    int GtoRVal;
+    int GtoGVal;
+    int GtoBVal;
+    int BtoRVal;
+    int BtoGVal;
+    int BtoBVal;
     int alphaVal;
-    EditText red_number;
-    EditText green_number;
-    EditText blue_number;
-    EditText alpha_number; ////
+    EditText RtoR;
+    EditText RtoG;
+    EditText RtoB;
+    EditText GtoR;
+    EditText GtoG;
+    EditText GtoB;
+    EditText BtoR;
+    EditText BtoG;
+    EditText BtoB;
+    EditText alpha_number;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filters);
-
         def = findViewById(R.id.default_button);
         def.setChecked(true);
-        //red = findViewById(R.id.red_button);
-        //green = findViewById(R.id.green_button);
-        //blue = findViewById(R.id.blue_button);
         protan = findViewById(R.id.protan);
         deuteran = findViewById(R.id.deuteran);
         tritan = findViewById(R.id.tritan);
         gray = findViewById(R.id.gray);
         invert = findViewById(R.id.invert);
         custom = findViewById(R.id.custom_button);
-
-
         imgAfter = findViewById(R.id.img_after);
         imgBefore = findViewById(R.id.img_before);
         Button btnGallery = findViewById(R.id.btn_gallery);
-
-        red_number = findViewById(R.id.red_number);
-        green_number = findViewById(R.id.green_number);
-        blue_number = findViewById(R.id.blue_number);
-        alpha_number = findViewById(R.id.alpha_number); ////
+        RtoR = findViewById(R.id.RtoR);
+        RtoG = findViewById(R.id.RtoG);
+        RtoB = findViewById(R.id.RtoB);
+        GtoR = findViewById(R.id.GtoR);
+        GtoG = findViewById(R.id.GtoG);
+        GtoB = findViewById(R.id.GtoB);
+        BtoR = findViewById(R.id.BtoR);
+        BtoG = findViewById(R.id.BtoG);
+        BtoB = findViewById(R.id.BtoB);
+        alpha_number = findViewById(R.id.alpha_number);
 
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,193 +185,30 @@ public class Filters extends AppCompatActivity {
                 startActivityForResult(iGallery, GALLERY_REQ_CODE);
             }
         });
-
-        red_slider = findViewById(R.id.red_slider);
-        green_slider = findViewById(R.id.green_slider);
-        blue_slider = findViewById(R.id.blue_slider);
-        alpha_slider = findViewById(R.id.alpha_slider); ////
-        //
+        alpha_slider = findViewById(R.id.alpha_slider);
         mToggleButton = findViewById(R.id.start_button);
         mSharedMemory = new SharedMemory(this);
-        //
-//        SeekBar.OnSeekBarChangeListener changeListener = new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                mSharedMemory.setAlpha(0);
-//                mSharedMemory.setRed(red_slider.getProgress());
-//                mSharedMemory.setGreen(green_slider.getProgress());
-//                mSharedMemory.setBlue(blue_slider.getProgress());
-//
-//                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
-//                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
-//                    startService(i);
-//                }
-//                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_INACTIVE);
-//            }
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//
-//            }
-//
-//        };
-        red_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                redVal = progress;
-                red_number.setText(Integer.toString(redVal));
-                def.setChecked(false);
-                //red.setChecked(false);
-                //green.setChecked(false);
-                //blue.setChecked(false);
-                protan.setChecked(false);
-                deuteran.setChecked(false);
-                tritan.setChecked(false);
-                gray.setChecked(false);
-                invert.setChecked(false);
-                custom.setChecked(true);
-                //
-                mSharedMemory.setAlpha(alpha_slider.getProgress());
-                mSharedMemory.setRed(red_slider.getProgress());
-                mSharedMemory.setGreen(green_slider.getProgress());
-                mSharedMemory.setBlue(blue_slider.getProgress());
-
-                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
-                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
-                    startService(i);
-                }
-                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
-                //
-                customFilter[0] = (float) red_slider.getProgress() / 255;
-                customFilter[6] = (float) green_slider.getProgress() / 255;
-                customFilter[12] = (float) blue_slider.getProgress() / 255;
-                customFilter[18] = (float) alpha_slider.getProgress() / 255;
-                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
-                currentFilter = new ColorMatrixColorFilter(customFilter);
-            }
-
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        green_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                greenVal = progress;
-                green_number.setText(Integer.toString(greenVal));
-                def.setChecked(false);
-                //red.setChecked(false);
-                //green.setChecked(false);
-                //blue.setChecked(false);
-                protan.setChecked(false);
-                deuteran.setChecked(false);
-                tritan.setChecked(false);
-                gray.setChecked(false);
-                invert.setChecked(false);
-                custom.setChecked(true);
-                //
-                mSharedMemory.setAlpha(alpha_slider.getProgress());
-                mSharedMemory.setRed(red_slider.getProgress());
-                mSharedMemory.setGreen(green_slider.getProgress());
-                mSharedMemory.setBlue(blue_slider.getProgress());
-
-                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
-                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
-                    startService(i);
-                }
-                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
-                //
-                customFilter[0] = (float) red_slider.getProgress() / 255;
-                customFilter[6] = (float) green_slider.getProgress() / 255;
-                customFilter[12] = (float) blue_slider.getProgress() / 255;
-                customFilter[18] = (float) alpha_slider.getProgress() / 255;
-                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
-                currentFilter = new ColorMatrixColorFilter(customFilter);
-            }
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        blue_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                blueVal = progress;
-                blue_number.setText(Integer.toString(blueVal));
-                def.setChecked(false);
-                //red.setChecked(false);
-                //green.setChecked(false);
-                //blue.setChecked(false);
-                protan.setChecked(false);
-                deuteran.setChecked(false);
-                tritan.setChecked(false);
-                gray.setChecked(false);
-                invert.setChecked(false);
-                custom.setChecked(true);
-                //
-                mSharedMemory.setAlpha(alpha_slider.getProgress());
-                mSharedMemory.setRed(red_slider.getProgress());
-                mSharedMemory.setGreen(green_slider.getProgress());
-                mSharedMemory.setBlue(blue_slider.getProgress());
-
-                if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
-                    Intent i = new Intent(Filters.this, ScreenFilterService.class);
-                    startService(i);
-                }
-                mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
-                //
-                customFilter[0] = (float) red_slider.getProgress() / 255;
-                customFilter[6] = (float) green_slider.getProgress() / 255;
-                customFilter[12] = (float) blue_slider.getProgress() / 255;
-                customFilter[18] = (float) alpha_slider.getProgress() / 255;
-                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
-//                imgAfter.getDrawable().setColorFilter(Color.rgb(red_slider.getProgress(), green_slider.getProgress(), blue_slider.getProgress()), PorterDuff.Mode.MULTIPLY);
-                currentFilter = new ColorMatrixColorFilter(customFilter);
-            }
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
         alpha_slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 alphaVal = progress;
                 alpha_number.setText(Integer.toString(alphaVal));
-                def.setChecked(false);
-                //red.setChecked(false);
-                //green.setChecked(false);
-                //blue.setChecked(false);
-                protan.setChecked(false);
-                deuteran.setChecked(false);
-                tritan.setChecked(false);
-                gray.setChecked(false);
-                invert.setChecked(false);
-                custom.setChecked(true);
-                //
                 mSharedMemory.setAlpha(alpha_slider.getProgress());
-                mSharedMemory.setRed(red_slider.getProgress());
-                mSharedMemory.setGreen(green_slider.getProgress());
-                mSharedMemory.setBlue(blue_slider.getProgress());
+//                mSharedMemory.setRed(red_slider.getProgress());
+//                mSharedMemory.setGreen(green_slider.getProgress());
+//                mSharedMemory.setBlue(blue_slider.getProgress());
 
                 if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
                     Intent i = new Intent(Filters.this, ScreenFilterService.class);
                     startService(i);
                 }
                 mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
-                //
-                customFilter[0] = (float) red_slider.getProgress() / 255;
-                customFilter[6] = (float) green_slider.getProgress() / 255;
-                customFilter[12] = (float) blue_slider.getProgress() / 255;
-                customFilter[18] = (float) alpha_slider.getProgress() / 255;
-                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(customFilter));
-                currentFilter = new ColorMatrixColorFilter(customFilter);
+                currentFilter[18] = (float) alpha_slider.getProgress();
+                float[] filter = new float[currentFilter.length];
+                for (int i = 0; i < currentFilter.length; i++) {
+                    filter[i] = currentFilter[i] / 255;
+                }
+                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(filter));
+                updateMatrix();
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -369,52 +222,193 @@ public class Filters extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
-                    if (TextUtils.isEmpty(red_number.getText().toString())) {
-                        redVal = 0;
+                    if (TextUtils.isEmpty(RtoR.getText().toString())) {
+                        RtoRVal = 0;
                     }
                     else {
-                        redVal = Integer.parseInt(red_number.getText().toString());
+                        RtoRVal = Integer.parseInt(RtoR.getText().toString());
+                        if (RtoRVal > 255) {
+                            RtoRVal = 255;
+                        }
                     }
-                    red_slider.setProgress(redVal);
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[0] = RtoRVal;
+                    updateFilter();
                 }
                 return true;
             }
         };
-        red_number.setOnEditorActionListener(editingActionListener);
+        RtoR.setOnEditorActionListener(editingActionListener);
         TextView.OnEditorActionListener editingActionListener2 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
-                    if (TextUtils.isEmpty(green_number.getText().toString())) {
-                        greenVal = 0;
+                    if (TextUtils.isEmpty(RtoG.getText().toString())) {
+                        RtoGVal = 0;
                     }
                     else {
-                        greenVal = Integer.parseInt(green_number.getText().toString());
+                        RtoGVal = Integer.parseInt(RtoG.getText().toString());
+                        if (RtoGVal > 255) {
+                            RtoGVal = 255;
+                        }
                     }
-                    green_slider.setProgress(greenVal);
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[1] = RtoGVal;
+                    updateFilter();
                 }
                 return true;
             }
         };
-        green_number.setOnEditorActionListener(editingActionListener2);
+        RtoG.setOnEditorActionListener(editingActionListener);
         TextView.OnEditorActionListener editingActionListener3 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
-                    if (TextUtils.isEmpty(blue_number.getText().toString())) {
-                        blueVal = 0;
+                    if (TextUtils.isEmpty(RtoB.getText().toString())) {
+                        RtoBVal = 0;
                     }
                     else {
-                        blueVal = Integer.parseInt(blue_number.getText().toString());
+                        RtoBVal = Integer.parseInt(RtoB.getText().toString());
+                        if (RtoBVal > 255) {
+                            RtoBVal = 255;
+                        }
                     }
-                    blue_slider.setProgress(blueVal);
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[2] = RtoBVal;
+                    updateFilter();
                 }
                 return true;
             }
         };
-        blue_number.setOnEditorActionListener(editingActionListener3);
-
+        RtoB.setOnEditorActionListener(editingActionListener);
         TextView.OnEditorActionListener editingActionListener4 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(GtoR.getText().toString())) {
+                        GtoRVal = 0;
+                    }
+                    else {
+                        GtoRVal = Integer.parseInt(GtoR.getText().toString());
+                        if (GtoRVal > 255) {
+                            GtoRVal = 255;
+                        }
+                    }
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[5] = GtoRVal;
+                    updateFilter();
+                }
+                return true;
+            }
+        };
+        GtoR.setOnEditorActionListener(editingActionListener);
+        TextView.OnEditorActionListener editingActionListener5 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(GtoG.getText().toString())) {
+                        GtoGVal = 0;
+                    }
+                    else {
+                        GtoGVal = Integer.parseInt(GtoG.getText().toString());
+                        if (GtoGVal > 255) {
+                            GtoGVal = 255;
+                        }
+                    }
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[6] = GtoGVal;
+                    updateFilter();
+                }
+                return true;
+            }
+        };
+        GtoG.setOnEditorActionListener(editingActionListener);
+        TextView.OnEditorActionListener editingActionListener6 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(GtoB.getText().toString())) {
+                        GtoBVal = 0;
+                    }
+                    else {
+                        GtoBVal = Integer.parseInt(GtoB.getText().toString());
+                        if (GtoBVal > 255) {
+                            GtoBVal = 255;
+                        }
+                    }
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[7] = GtoBVal;
+                    updateFilter();
+                }
+                return true;
+            }
+        };
+        GtoB.setOnEditorActionListener(editingActionListener);
+        TextView.OnEditorActionListener editingActionListener7 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(BtoR.getText().toString())) {
+                        BtoRVal = 0;
+                    }
+                    else {
+                        BtoRVal = Integer.parseInt(BtoR.getText().toString());
+                        if (BtoRVal > 255) {
+                            BtoRVal = 255;
+                        }
+                    }
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[10] = BtoRVal;
+                    updateFilter();
+                }
+                return true;
+            }
+        };
+        BtoR.setOnEditorActionListener(editingActionListener);
+        TextView.OnEditorActionListener editingActionListener8 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(BtoG.getText().toString())) {
+                        BtoGVal = 0;
+                    }
+                    else {
+                        BtoGVal = Integer.parseInt(BtoG.getText().toString());
+                        if (BtoGVal > 255) {
+                            BtoGVal = 255;
+                        }
+                    }
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[11] = BtoGVal;
+                    updateFilter();
+                }
+                return true;
+            }
+        };
+        BtoG.setOnEditorActionListener(editingActionListener);
+        TextView.OnEditorActionListener editingActionListener9 = new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (TextUtils.isEmpty(BtoB.getText().toString())) {
+                        BtoBVal = 0;
+                    }
+                    else {
+                        BtoBVal = Integer.parseInt(BtoB.getText().toString());
+                        if (BtoBVal > 255) {
+                            BtoBVal = 255;
+                        }
+                        BtoB.setText(Integer.toString(255));
+                    }
+                    customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+                    customFilter[12] = BtoBVal;
+                    updateFilter();
+                }
+                return true;
+            }
+        };
+        BtoB.setOnEditorActionListener(editingActionListener);
+        TextView.OnEditorActionListener editingActionListener10 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
@@ -423,8 +417,14 @@ public class Filters extends AppCompatActivity {
                     }
                     else {
                         alphaVal = Integer.parseInt(alpha_number.getText().toString());
+                        if (alphaVal > 255) {
+                            alphaVal = 255;
+                            alpha_number.setText(Integer.toString(255));
+                        }
                     }
                     alpha_slider.setProgress(alphaVal);
+                    currentFilter[18] = alphaVal;
+                    updateMatrix();
                 }
                 return true;
             }
@@ -445,11 +445,15 @@ public class Filters extends AppCompatActivity {
     }
 
     public void applyFilter(View view) {
-        imgBefore.setColorFilter(currentFilter);
+        float[] filter = new float[currentFilter.length];
+        for (int i = 0; i < currentFilter.length; i++) {
+            filter[i] = currentFilter[i] / 255;
+        }
+        imgBefore.setColorFilter(new ColorMatrixColorFilter(filter));
         if (prevFilterExists) {
             previousFilters.add(prevFilter);
         }
-        prevFilter = currentFilter;
+        prevFilter = Arrays.copyOf(currentFilter, currentFilter.length);
         prevFilterExists = true;
         if (previousFilters.size() > 10) {
             previousFilters.remove(0);
@@ -460,38 +464,93 @@ public class Filters extends AppCompatActivity {
             prevFilterExists = false;
             return;
         }
-        ColorMatrixColorFilter revertedFilter = previousFilters.lastElement();
-        imgBefore.setColorFilter(revertedFilter);
+        float[] revertedFilter = previousFilters.lastElement();
+        float[] filter = new float[revertedFilter.length];
+        for (int i = 0; i < revertedFilter.length; i++) {
+            filter[i] = revertedFilter[i] / 255;
+        }
+        imgBefore.setColorFilter(new ColorMatrixColorFilter(filter));
         previousFilters.remove(previousFilters.size() - 1);
     }
 
     public void onClick(View view) {
         if (def.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(defaultFilter);
-        } /*else if (red.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(redFilter);
-        } else if (green.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(greenFilter);
-        } else if (blue.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(blueFilter);
-        } */else if (protan.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(PROTANOPIA);
+            currentFilter = Arrays.copyOf(defaultFilter, defaultFilter.length);
+        } else if (protan.isChecked()) {
+            currentFilter = Arrays.copyOf(PROTANOPIA, PROTANOPIA.length);
         } else if (deuteran.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(DEUTERANOPIA);
+            currentFilter = Arrays.copyOf(DEUTERANOPIA, DEUTERANOPIA.length);
         } else if (tritan.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(TRITANOPIA);
+            currentFilter = Arrays.copyOf(TRITANOPIA, TRITANOPIA.length);
         } else if (gray.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(GRAYSCALE);
+            currentFilter = Arrays.copyOf(GRAYSCALE, GRAYSCALE.length);
         } else if (invert.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(INVERTED);
-        } else if (red_slider.getProgress() == 0 && green_slider.getProgress() == 0 && blue_slider.getProgress() == 0 && alpha_slider.getProgress() == 0) {
-            currentFilter = new ColorMatrixColorFilter(defaultFilter);
+            currentFilter = Arrays.copyOf(INVERTED, INVERTED.length);
+//            currentFilter[18] = (float) alpha_slider.getProgress();
+//            imgAfter.setColorFilter(new ColorMatrixColorFilter(currentFilter));
+//            updateMatrix();
+            return;
         }  else if (custom.isChecked()) {
-            currentFilter = new ColorMatrixColorFilter(customFilter);
+            currentFilter = Arrays.copyOf(customFilter, customFilter.length);
         } else {
-            currentFilter = new ColorMatrixColorFilter(defaultFilter);
+            currentFilter = Arrays.copyOf(defaultFilter, defaultFilter.length);
         }
-        imgAfter.setColorFilter(currentFilter);
+        currentFilter[18] = (float) alpha_slider.getProgress();
+        float[] filter = new float[currentFilter.length];
+
+        for (int i = 0; i < currentFilter.length; i++) {
+            filter[i] = currentFilter[i] / 255;
+        }
+        imgAfter.setColorFilter(new ColorMatrixColorFilter(filter));
+        updateMatrix();
+    }
+    public void updateMatrix() {
+        EditText RtoR = findViewById(R.id.RtoR);
+        EditText RtoG = findViewById(R.id.RtoG);
+        EditText RtoB = findViewById(R.id.RtoB);
+        EditText GtoR = findViewById(R.id.GtoR);
+        EditText GtoG = findViewById(R.id.GtoG);
+        EditText GtoB = findViewById(R.id.GtoB);
+        EditText BtoR = findViewById(R.id.BtoR);
+        EditText BtoG = findViewById(R.id.BtoG);
+        EditText BtoB = findViewById(R.id.BtoB);
+        EditText alpha_number = findViewById(R.id.alpha_number);
+        RtoR.setText(Integer.toString((int) currentFilter[0]));
+        RtoG.setText(Integer.toString((int) currentFilter[1]));
+        RtoB.setText(Integer.toString((int) currentFilter[2]));
+        GtoR.setText(Integer.toString((int) currentFilter[5]));
+        GtoG.setText(Integer.toString((int) currentFilter[6]));
+        GtoB.setText(Integer.toString((int) currentFilter[7]));
+        BtoR.setText(Integer.toString((int) currentFilter[10]));
+        BtoG.setText(Integer.toString((int) currentFilter[11]));
+        BtoB.setText(Integer.toString((int) currentFilter[12]));
+        System.out.println(currentFilter[18]);
+        alpha_number.setText(Integer.toString((int) currentFilter[18]));
+    }
+    public void updateFilter() {
+        def.setChecked(false);
+        protan.setChecked(false);
+        deuteran.setChecked(false);
+        tritan.setChecked(false);
+        gray.setChecked(false);
+        invert.setChecked(false);
+        custom.setChecked(true);
+        mSharedMemory.setAlpha(alpha_slider.getProgress());
+//                mSharedMemory.setRed(red_slider.getProgress());
+//                mSharedMemory.setGreen(green_slider.getProgress());
+//                mSharedMemory.setBlue(blue_slider.getProgress());
+
+        if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
+            Intent i = new Intent(Filters.this, ScreenFilterService.class);
+            startService(i);
+        }
+        mToggleButton.setChecked(ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE);
+        float[] filter = new float[customFilter.length];
+        for (int i = 0; i < customFilter.length; i++) {
+            filter[i] = customFilter[i] / 255;
+        }
+        imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(filter));
+        currentFilter = customFilter;
     }
 
 
