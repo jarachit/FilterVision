@@ -9,7 +9,7 @@ import android.content.Intent;
 import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private CardView filtersCard, testCard, tutorialCard, presetsCard, settingsCard;
+    private CardView filtersCard, testCard, tutorialCard, presetsCard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,15 +18,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         testCard = (CardView) findViewById(R.id.test);
         tutorialCard = (CardView) findViewById(R.id.tutorial);
         presetsCard = (CardView) findViewById(R.id.presets);
-        settingsCard = (CardView) findViewById(R.id.settings);
-
-
 
         filtersCard.setOnClickListener(this);
         testCard.setOnClickListener(this);
         tutorialCard.setOnClickListener(this);
         presetsCard.setOnClickListener(this);
-        settingsCard.setOnClickListener(this);
     }
 
     @Override
