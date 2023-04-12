@@ -259,7 +259,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        RtoG.setOnEditorActionListener(editingActionListener);
+        RtoG.setOnEditorActionListener(editingActionListener2);
         TextView.OnEditorActionListener editingActionListener3 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -280,7 +280,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        RtoB.setOnEditorActionListener(editingActionListener);
+        RtoB.setOnEditorActionListener(editingActionListener3);
         TextView.OnEditorActionListener editingActionListener4 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -301,7 +301,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        GtoR.setOnEditorActionListener(editingActionListener);
+        GtoR.setOnEditorActionListener(editingActionListener4);
         TextView.OnEditorActionListener editingActionListener5 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -322,7 +322,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        GtoG.setOnEditorActionListener(editingActionListener);
+        GtoG.setOnEditorActionListener(editingActionListener5);
         TextView.OnEditorActionListener editingActionListener6 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -343,7 +343,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        GtoB.setOnEditorActionListener(editingActionListener);
+        GtoB.setOnEditorActionListener(editingActionListener6);
         TextView.OnEditorActionListener editingActionListener7 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -364,7 +364,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        BtoR.setOnEditorActionListener(editingActionListener);
+        BtoR.setOnEditorActionListener(editingActionListener7);
         TextView.OnEditorActionListener editingActionListener8 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -385,7 +385,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        BtoG.setOnEditorActionListener(editingActionListener);
+        BtoG.setOnEditorActionListener(editingActionListener8);
         TextView.OnEditorActionListener editingActionListener9 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -407,7 +407,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        BtoB.setOnEditorActionListener(editingActionListener);
+        BtoB.setOnEditorActionListener(editingActionListener9);
         TextView.OnEditorActionListener editingActionListener10 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -416,10 +416,12 @@ public class Filters extends AppCompatActivity {
                         alphaVal = 255;
                     }
                     else {
-                        alphaVal = Integer.parseInt(alpha_number.getText().toString());
-                        if (alphaVal > 255) {
+                        int temp = Integer.parseInt(alpha_number.getText().toString());
+                        if (temp > 255) {
                             alphaVal = 255;
-                            alpha_number.setText(Integer.toString(255));
+                        }
+                        else {
+                            alphaVal = temp;
                         }
                     }
                     alpha_slider.setProgress(alphaVal);
@@ -429,7 +431,7 @@ public class Filters extends AppCompatActivity {
                 return true;
             }
         };
-        alpha_number.setOnEditorActionListener(editingActionListener4);
+        alpha_number.setOnEditorActionListener(editingActionListener10);
         mToggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
