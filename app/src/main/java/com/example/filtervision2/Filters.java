@@ -514,6 +514,11 @@ public class Filters extends AppCompatActivity {
     public void revertFilter(View view) {
         if (previousFilters.isEmpty()) {
             prevFilterExists = false;
+            float[] filter = new float[defaultFilter.length];
+            for (int i = 0; i < defaultFilter.length; i++) {
+                filter[i] = defaultFilter[i] / 255;
+            }
+            imgBefore.setColorFilter(new ColorMatrixColorFilter(filter));
             return;
         }
         float[] revertedFilter = previousFilters.lastElement();
