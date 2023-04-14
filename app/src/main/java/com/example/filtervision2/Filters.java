@@ -208,7 +208,7 @@ public class Filters extends AppCompatActivity {
                 for (int i = 0; i < currentFilter.length; i++) {
                     filter[i] = currentFilter[i] / 255;
                 }
-                imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(filter));
+                imgAfter.setColorFilter(new ColorMatrixColorFilter(filter));
                 updateMatrix();
             }
 
@@ -222,9 +222,10 @@ public class Filters extends AppCompatActivity {
         TextView.OnEditorActionListener editingActionListener = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
+                if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE ) {
                     if (TextUtils.isEmpty(RtoR.getText().toString())) {
                         RtoRVal = 0;
+                        RtoR.setText(Integer.toString(0));
                     }
                     else {
                         RtoRVal = Integer.parseInt(RtoR.getText().toString());
@@ -250,6 +251,7 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(RtoG.getText().toString())) {
                         RtoGVal = 0;
+                        RtoG.setText(Integer.toString(0));
                     }
                     else {
                         RtoGVal = Integer.parseInt(RtoG.getText().toString());
@@ -275,6 +277,7 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(RtoB.getText().toString())) {
                         RtoBVal = 0;
+                        RtoB.setText(Integer.toString(0));
                     }
                     else {
                         RtoBVal = Integer.parseInt(RtoB.getText().toString());
@@ -300,6 +303,7 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(GtoR.getText().toString())) {
                         GtoRVal = 0;
+                        GtoR.setText(Integer.toString(0));
                     }
                     else {
                         GtoRVal = Integer.parseInt(GtoR.getText().toString());
@@ -325,6 +329,7 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(GtoG.getText().toString())) {
                         GtoGVal = 0;
+                        GtoG.setText(Integer.toString(0));
                     }
                     else {
                         GtoGVal = Integer.parseInt(GtoG.getText().toString());
@@ -350,6 +355,7 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(GtoB.getText().toString())) {
                         GtoBVal = 0;
+                        GtoB.setText(Integer.toString(0));
                     }
                     else {
                         GtoBVal = Integer.parseInt(GtoB.getText().toString());
@@ -375,6 +381,7 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(BtoR.getText().toString())) {
                         BtoRVal = 0;
+                        BtoR.setText(Integer.toString(0));
                     }
                     else {
                         BtoRVal = Integer.parseInt(BtoR.getText().toString());
@@ -400,6 +407,7 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(BtoG.getText().toString())) {
                         BtoGVal = 0;
+                        BtoG.setText(Integer.toString(0));
                     }
                     else {
                         BtoGVal = Integer.parseInt(BtoG.getText().toString());
@@ -425,6 +433,7 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(BtoB.getText().toString())) {
                         BtoBVal = 0;
+                        BtoB.setText(Integer.toString(0));
                     }
                     else {
                         BtoBVal = Integer.parseInt(BtoB.getText().toString());
@@ -450,11 +459,13 @@ public class Filters extends AppCompatActivity {
                 if ((actionId == EditorInfo.IME_NULL && event.getAction() == KeyEvent.ACTION_DOWN) || actionId == EditorInfo.IME_ACTION_DONE) {
                     if (TextUtils.isEmpty(alpha_number.getText().toString())) {
                         alphaVal = 255;
+                        alpha_number.setText(Integer.toString(255));
                     }
                     else {
                         int temp = Integer.parseInt(alpha_number.getText().toString());
                         if (temp > 255) {
                             alphaVal = 255;
+                            alpha_number.setText(Integer.toString(255));
                         }
                         else {
                             alphaVal = temp;
@@ -565,7 +576,6 @@ public class Filters extends AppCompatActivity {
         BtoR.setText(Integer.toString((int) currentFilter[10]));
         BtoG.setText(Integer.toString((int) currentFilter[11]));
         BtoB.setText(Integer.toString((int) currentFilter[12]));
-        System.out.println(currentFilter[18]);
         alpha_number.setText(Integer.toString((int) currentFilter[18]));
     }
     public void updateFilter() {
@@ -577,9 +587,9 @@ public class Filters extends AppCompatActivity {
         invert.setChecked(false);
         custom.setChecked(true);
         mSharedMemory.setAlpha(alpha_slider.getProgress());
-//                mSharedMemory.setRed(red_slider.getProgress());
-//                mSharedMemory.setGreen(green_slider.getProgress());
-//                mSharedMemory.setBlue(blue_slider.getProgress());
+//        mSharedMemory.setRed(red_slider.getProgress());
+//        mSharedMemory.setGreen(green_slider.getProgress());
+//        mSharedMemory.setBlue(blue_slider.getProgress());
 
         if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
             Intent i = new Intent(Filters.this, ScreenFilterService.class);
@@ -590,8 +600,8 @@ public class Filters extends AppCompatActivity {
         for (int i = 0; i < customFilter.length; i++) {
             filter[i] = customFilter[i] / 255;
         }
-        imgAfter.getDrawable().setColorFilter(new ColorMatrixColorFilter(filter));
-        currentFilter = customFilter;
+        imgAfter.setColorFilter(new ColorMatrixColorFilter(filter));
+        currentFilter = Arrays.copyOf(customFilter, customFilter.length);
     }
 
 

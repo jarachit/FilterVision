@@ -149,12 +149,12 @@
                     app:layout_constraintEnd_toStartOf="@id/To"
                     app:layout_constraintTop_toTopOf="parent" />
                 <TextView
-                    android:id="@+id/To"
+                    android:id="@+id/from"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="To"
+                    android:text="From"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@id/blank3"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -273,12 +273,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dp">
                         <TextView
-                            android:id="@+id/from"
+                            android:id="@+id/To"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.2"
                             android:gravity="center"
-                            android:text="From"
+                            android:text="To"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/Gleft"
