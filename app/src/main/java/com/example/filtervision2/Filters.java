@@ -116,32 +116,26 @@ public class Filters extends AppCompatActivity {
 
     private static final int RESULT_LOAD_IMAGE = 1;
     RadioButton def;
-    RadioButton red;
-    RadioButton green;
-    RadioButton blue;
     RadioButton protan;
     RadioButton deuteran;
     RadioButton tritan;
     RadioButton gray;
     RadioButton invert;
     RadioButton custom;
-    SeekBar red_slider;
-    SeekBar green_slider;
-    SeekBar blue_slider;
     SeekBar alpha_slider;///
     private final int GALLERY_REQ_CODE = 1;
     ImageView imgAfter;
     ImageView imgBefore;
-    int RtoRVal;
-    int RtoGVal;
-    int RtoBVal;
-    int GtoRVal;
-    int GtoGVal;
-    int GtoBVal;
-    int BtoRVal;
-    int BtoGVal;
-    int BtoBVal;
-    int alphaVal;
+    int RtoRVal = 255;
+    int RtoGVal = 0;
+    int RtoBVal = 0;
+    int GtoRVal = 0;
+    int GtoGVal = 255;
+    int GtoBVal = 0;
+    int BtoRVal = 0;
+    int BtoGVal = 0;
+    int BtoBVal = 255;
+    int alphaVal = 255;
     EditText RtoR;
     EditText RtoG;
     EditText RtoB;
@@ -194,9 +188,9 @@ public class Filters extends AppCompatActivity {
                 alphaVal = progress;
                 alpha_number.setText(Integer.toString(alphaVal));
                 mSharedMemory.setAlpha(alpha_slider.getProgress());
-//                mSharedMemory.setRed(red_slider.getProgress());
-//                mSharedMemory.setGreen(green_slider.getProgress());
-//                mSharedMemory.setBlue(blue_slider.getProgress());
+                mSharedMemory.setRed(RtoRVal);
+                mSharedMemory.setGreen(GtoGVal);
+                mSharedMemory.setBlue(BtoBVal);
 
                 if (ScreenFilterService.STATE == ScreenFilterService.STATE_ACTIVE) {
                     Intent i = new Intent(Filters.this, ScreenFilterService.class);
@@ -234,6 +228,10 @@ public class Filters extends AppCompatActivity {
                             RtoR.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[0] = RtoRVal;
                     updateFilter();
@@ -260,6 +258,10 @@ public class Filters extends AppCompatActivity {
                             RtoG.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[1] = RtoGVal;
                     updateFilter();
@@ -286,6 +288,10 @@ public class Filters extends AppCompatActivity {
                             RtoB.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[2] = RtoBVal;
                     updateFilter();
@@ -312,6 +318,10 @@ public class Filters extends AppCompatActivity {
                             GtoR.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[5] = GtoRVal;
                     updateFilter();
@@ -338,6 +348,10 @@ public class Filters extends AppCompatActivity {
                             GtoG.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[6] = GtoGVal;
                     updateFilter();
@@ -364,6 +378,10 @@ public class Filters extends AppCompatActivity {
                             GtoB.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[7] = GtoBVal;
                     updateFilter();
@@ -390,6 +408,10 @@ public class Filters extends AppCompatActivity {
                             BtoR.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[10] = BtoRVal;
                     updateFilter();
@@ -416,6 +438,10 @@ public class Filters extends AppCompatActivity {
                             BtoG.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[11] = BtoGVal;
                     updateFilter();
@@ -442,6 +468,10 @@ public class Filters extends AppCompatActivity {
                             BtoB.setText(Integer.toString(255));
                         }
                     }
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[12] = BtoBVal;
                     updateFilter();
@@ -472,6 +502,10 @@ public class Filters extends AppCompatActivity {
                         }
                     }
                     alpha_slider.setProgress(alphaVal);
+                    mSharedMemory.setAlpha(alpha_slider.getProgress());
+                    mSharedMemory.setRed(RtoRVal);
+                    mSharedMemory.setGreen(GtoGVal);
+                    mSharedMemory.setBlue(BtoBVal);
                     currentFilter[18] = alphaVal;
                     updateMatrix();
                     v.clearFocus();
