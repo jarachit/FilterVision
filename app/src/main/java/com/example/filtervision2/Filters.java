@@ -8,6 +8,7 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.ColorFilter;
 import android.net.Uri;
 import android.os.Build;
+import android.view.inputmethod.InputMethodManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -229,11 +230,15 @@ public class Filters extends AppCompatActivity {
                         RtoRVal = Integer.parseInt(RtoR.getText().toString());
                         if (RtoRVal > 255) {
                             RtoRVal = 255;
+                            RtoR.setText(Integer.toString(255));
                         }
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[0] = RtoRVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -250,11 +255,15 @@ public class Filters extends AppCompatActivity {
                         RtoGVal = Integer.parseInt(RtoG.getText().toString());
                         if (RtoGVal > 255) {
                             RtoGVal = 255;
+                            RtoG.setText(Integer.toString(255));
                         }
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[1] = RtoGVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -271,11 +280,15 @@ public class Filters extends AppCompatActivity {
                         RtoBVal = Integer.parseInt(RtoB.getText().toString());
                         if (RtoBVal > 255) {
                             RtoBVal = 255;
+                            RtoB.setText(Integer.toString(255));
                         }
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[2] = RtoBVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -292,11 +305,15 @@ public class Filters extends AppCompatActivity {
                         GtoRVal = Integer.parseInt(GtoR.getText().toString());
                         if (GtoRVal > 255) {
                             GtoRVal = 255;
+                            GtoR.setText(Integer.toString(255));
                         }
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[5] = GtoRVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -313,11 +330,15 @@ public class Filters extends AppCompatActivity {
                         GtoGVal = Integer.parseInt(GtoG.getText().toString());
                         if (GtoGVal > 255) {
                             GtoGVal = 255;
+                            GtoG.setText(Integer.toString(255));
                         }
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[6] = GtoGVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -334,11 +355,15 @@ public class Filters extends AppCompatActivity {
                         GtoBVal = Integer.parseInt(GtoB.getText().toString());
                         if (GtoBVal > 255) {
                             GtoBVal = 255;
+                            GtoB.setText(Integer.toString(255));
                         }
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[7] = GtoBVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -355,11 +380,15 @@ public class Filters extends AppCompatActivity {
                         BtoRVal = Integer.parseInt(BtoR.getText().toString());
                         if (BtoRVal > 255) {
                             BtoRVal = 255;
+                            BtoR.setText(Integer.toString(255));
                         }
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[10] = BtoRVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -376,11 +405,15 @@ public class Filters extends AppCompatActivity {
                         BtoGVal = Integer.parseInt(BtoG.getText().toString());
                         if (BtoGVal > 255) {
                             BtoGVal = 255;
+                            BtoG.setText(Integer.toString(255));
                         }
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[11] = BtoGVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -397,12 +430,15 @@ public class Filters extends AppCompatActivity {
                         BtoBVal = Integer.parseInt(BtoB.getText().toString());
                         if (BtoBVal > 255) {
                             BtoBVal = 255;
+                            BtoB.setText(Integer.toString(255));
                         }
-                        BtoB.setText(Integer.toString(255));
                     }
                     customFilter = Arrays.copyOf(currentFilter, currentFilter.length);
                     customFilter[12] = BtoBVal;
                     updateFilter();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
@@ -427,6 +463,9 @@ public class Filters extends AppCompatActivity {
                     alpha_slider.setProgress(alphaVal);
                     currentFilter[18] = alphaVal;
                     updateMatrix();
+                    v.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true;
             }
