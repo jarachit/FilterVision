@@ -12,6 +12,8 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         tools:ignore="ExtraText">
 
         <ImageView
@@ -420,6 +422,7 @@
                     android:layout_height="50dp"
                     android:width="40dp"
                     android:ems="10"
+                    android:text="255"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     app:layout_constraintBottom_toBottomOf="@+id/alpha_slider"
