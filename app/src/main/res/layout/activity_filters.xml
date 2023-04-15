@@ -435,6 +435,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
+                    android:orientation="horizontal"
                     android:translationZ="90dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -446,66 +447,83 @@
 
                     <RadioButton
                         android:id="@+id/custom_button"
+                        android:layout_weight="0.25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/purple_700"
-                        android:onClick="onClick"
+                        android:onClick="onClickTop"
                         android:text="@string/custom_button" />
 
                     <RadioButton
                         android:id="@+id/default_button"
+                        android:layout_weight="0.25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/purple_700"
-                        android:onClick="onClick"
+                        android:onClick="onClickTop"
                         android:text="@string/default_button" />
-
+                    <RadioButton
+                        android:id="@+id/invert"
+                        android:layout_weight="0.25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/purple_700"
+                        android:onClick="onClickTop"
+                        android:text="Inverted" />
+                    <RadioButton
+                        android:id="@+id/gray"
+                        android:layout_weight="0.25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/purple_700"
+                        android:onClick="onClickTop"
+                        android:text="Grayscale" />
+                </RadioGroup>
+                <RadioGroup
+                    android:id="@+id/button_group2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:orientation="horizontal"
+                    android:translationZ="90dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintLeft_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_group"
+                    app:layout_constraintVertical_bias="0.04">
                     <RadioButton
                         android:id="@+id/protan"
-                        android:layout_width="match_parent"
+                        android:layout_weight="0.33"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/purple_700"
-                        android:onClick="onClick"
+                        android:onClick="onClickBottom"
                         android:text="Protanopia" />
-
                     <RadioButton
                         android:id="@+id/deuteran"
-                        android:layout_width="match_parent"
+                        android:layout_weight="0.33"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/purple_700"
-                        android:onClick="onClick"
+                        android:onClick="onClickBottom"
                         android:text="Deuteranopia" />
 
                     <RadioButton
                         android:id="@+id/tritan"
-                        android:layout_width="match_parent"
+                        android:layout_weight="0.33"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/purple_700"
-                        android:onClick="onClick"
+                        android:onClick="onClickBottom"
                         android:text="Tritanopia" />
-
-                    <RadioButton
-                        android:id="@+id/gray"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/purple_700"
-                        android:onClick="onClick"
-                        android:text="Grayscale" />
-
-                    <RadioButton
-                        android:id="@+id/invert"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="@color/purple_700"
-                        android:onClick="onClick"
-                        android:text="Inverted" />
-
                 </RadioGroup>
 
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
-                    android:layout_height="550dp"
+                    android:layout_height="200dp"
                     app:layout_constraintTop_toBottomOf="@+id/alpha_slider"
                     app:layout_constraintBottom_toBottomOf="@+id/button_group"
                     app:layout_constraintBottom_toTopOf="@+id/start_button"
