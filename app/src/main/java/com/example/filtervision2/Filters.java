@@ -531,18 +531,39 @@ public class Filters extends AppCompatActivity {
     }
 
     public void applyFilter(View view) {
-        float[] filter = new float[currentFilter.length];
+        boolean invertedFilt = true;
         for (int i = 0; i < currentFilter.length; i++) {
-            filter[i] = currentFilter[i] / 255;
+            if (currentFilter[i] != INVERTED[i]) {
+                invertedFilt = false;
+                break;
+            }
         }
-        imgBefore.setColorFilter(new ColorMatrixColorFilter(filter));
-        if (prevFilterExists) {
-            previousFilters.add(prevFilter);
-        }
-        prevFilter = Arrays.copyOf(currentFilter, currentFilter.length);
-        prevFilterExists = true;
-        if (previousFilters.size() > 10) {
-            previousFilters.remove(0);
+        if (invertedFilt) {
+            System.out.println(1);
+            imgBefore.setColorFilter(new ColorMatrixColorFilter(currentFilter));
+            if (prevFilterExists) {
+                previousFilters.add(prevFilter);
+            }
+            prevFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+            prevFilterExists = true;
+            if (previousFilters.size() > 10) {
+                previousFilters.remove(0);
+            }
+        } else {
+            System.out.println(0);
+            float[] filter = new float[currentFilter.length];
+            for (int i = 0; i < currentFilter.length; i++) {
+                filter[i] = currentFilter[i] / 255;
+            }
+            imgBefore.setColorFilter(new ColorMatrixColorFilter(filter));
+            if (prevFilterExists) {
+                previousFilters.add(prevFilter);
+            }
+            prevFilter = Arrays.copyOf(currentFilter, currentFilter.length);
+            prevFilterExists = true;
+            if (previousFilters.size() > 10) {
+                previousFilters.remove(0);
+            }
         }
     }
     public void revertFilter(View view) {
@@ -556,12 +577,23 @@ public class Filters extends AppCompatActivity {
             return;
         }
         float[] revertedFilter = previousFilters.lastElement();
-        float[] filter = new float[revertedFilter.length];
+        boolean invertedFilt = true;
         for (int i = 0; i < revertedFilter.length; i++) {
-            filter[i] = revertedFilter[i] / 255;
+            if (revertedFilter[i] != INVERTED[i]) {
+                invertedFilt = false;
+            }
         }
-        imgBefore.setColorFilter(new ColorMatrixColorFilter(filter));
-        previousFilters.remove(previousFilters.size() - 1);
+        if (invertedFilt) {
+            imgBefore.setColorFilter(new ColorMatrixColorFilter(INVERTED));
+            previousFilters.remove(previousFilters.size() - 1);
+        } else {
+            float[] filter = new float[revertedFilter.length];
+            for (int i = 0; i < revertedFilter.length; i++) {
+                filter[i] = revertedFilter[i] / 255;
+            }
+            imgBefore.setColorFilter(new ColorMatrixColorFilter(filter));
+            previousFilters.remove(previousFilters.size() - 1);
+        }
     }
 
     public void onClick(View view) {
@@ -577,9 +609,9 @@ public class Filters extends AppCompatActivity {
             currentFilter = Arrays.copyOf(GRAYSCALE, GRAYSCALE.length);
         } else if (invert.isChecked()) {
             currentFilter = Arrays.copyOf(INVERTED, INVERTED.length);
-//            currentFilter[18] = (float) alpha_slider.getProgress();
-//            imgAfter.setColorFilter(new ColorMatrixColorFilter(currentFilter));
-//            updateMatrix();
+            currentFilter[18] = (float) alpha_slider.getProgress() / 255;
+            imgAfter.setColorFilter(new ColorMatrixColorFilter(currentFilter));
+            updateMatrix();
             return;
         }  else if (custom.isChecked()) {
             currentFilter = Arrays.copyOf(customFilter, customFilter.length);
