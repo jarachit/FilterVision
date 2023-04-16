@@ -29,7 +29,7 @@ public class Tutorial extends AppCompatActivity {
         } else if (itemId == R.id.filters) {
             selectedFragment = new TutorialFilters();
         } else if (itemId == R.id.test) {
-            selectedFragment = new TutorialTest();
+            selectedFragment = new TutorialPresets();
         }
         // It will help to replace the
         // one fragment to other.

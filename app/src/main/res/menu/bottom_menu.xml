@@ -12,8 +12,8 @@
         android:icon="@drawable/filter_icon"/>
 
     <item
-        android:id="@+id/test"
-        android:title="Test"
+        android:id="@+id/presets"
+        android:title="Presets"
         android:icon="@drawable/test_icon"/>
 
 </menu>
