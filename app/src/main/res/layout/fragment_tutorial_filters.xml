@@ -349,7 +349,7 @@
         <TextView
             android:id="@+id/textView12"
             android:layout_width="220dp"
-            android:layout_height="190dp"
+            android:layout_height="195dp"
             android:layout_marginEnd="15dp"
             android:text="There are several preset filters already available for you!
 Based on the type of color imbalance you have, which you can check in the 'Test' tab,
