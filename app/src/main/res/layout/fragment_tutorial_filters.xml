@@ -39,7 +39,7 @@
         <ImageView
             android:id="@+id/imageView8"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="515dp"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="There are two main ways to adjust the color of your filter."
-            android:textSize="15sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -348,9 +348,9 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="213dp"
-            android:layout_height="160dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="220dp"
+            android:layout_height="170dp"
+            android:layout_marginEnd="15dp"
             android:text="There are several preset filters already available for you!
 Based on the type of color imbalance you have, which you can check in the 'Test' tab,
 you can choose one of these presets to apply a color filter. Shown on the left is an example of
@@ -365,8 +365,8 @@ the buttons that denote the presets."
 
         <TextView
             android:id="@+id/textView13"
-            android:layout_width="350dp"
-            android:layout_height="135dp"
+            android:layout_width="360dp"
+            android:layout_height="150dp"
             android:layout_marginTop="45dp"
             android:text="Alternatively, you can make a filter of your own! By selecting the 'Custom'
 option, you can set the matrix values to build your own filter, or to adjust a preset filter. Additionally,

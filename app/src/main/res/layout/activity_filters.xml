@@ -371,7 +371,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
                 android:buttonTint="@color/purple_700"
-                android:onClick="onClickTop"
+                android:onClick="onClick"
                 android:text="@string/custom_button" />
 
             <RadioButton
@@ -380,7 +380,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
                 android:buttonTint="@color/purple_700"
-                android:onClick="onClickTop"
+                android:onClick="onClick"
                 android:text="@string/default_button" />
 
             <RadioButton
@@ -389,7 +389,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.33"
                 android:buttonTint="@color/purple_700"
-                android:onClick="onClickBottom"
+                android:onClick="onClick"
                 android:text="Protanopia" />
 
             <RadioButton
@@ -398,7 +398,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.33"
                 android:buttonTint="@color/purple_700"
-                android:onClick="onClickBottom"
+                android:onClick="onClick"
                 android:text="Deuteranopia" />
 
             <RadioButton
@@ -407,7 +407,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.33"
                 android:buttonTint="@color/purple_700"
-                android:onClick="onClickBottom"
+                android:onClick="onClick"
                 android:text="Tritanopia" />
 
             <RadioButton
@@ -416,7 +416,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
                 android:buttonTint="@color/purple_700"
-                android:onClick="onClickTop"
+                android:onClick="onClick"
                 android:text="Grayscale" />
 
             <RadioButton
@@ -425,7 +425,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
                 android:buttonTint="@color/purple_700"
-                android:onClick="onClickTop"
+                android:onClick="onClick"
                 android:text="Inverted" />
 
         </RadioGroup>
