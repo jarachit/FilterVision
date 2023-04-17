@@ -596,12 +596,15 @@ public class Filters extends AppCompatActivity {
         }
     }
 
-    public void onClickTop(View view) {
-        protan.setChecked(false);
-        deuteran.setChecked(false);
-        tritan.setChecked(false);
+    public void onClick(View view) {
         if (def.isChecked()) {
             currentFilter = Arrays.copyOf(defaultFilter, defaultFilter.length);
+        } else if (protan.isChecked()) {
+            currentFilter = Arrays.copyOf(PROTANOPIA, PROTANOPIA.length);
+        } else if (deuteran.isChecked()) {
+            currentFilter = Arrays.copyOf(DEUTERANOPIA, DEUTERANOPIA.length);
+        } else if (tritan.isChecked()) {
+            currentFilter = Arrays.copyOf(TRITANOPIA, TRITANOPIA.length);
         } else if (gray.isChecked()) {
             currentFilter = Arrays.copyOf(GRAYSCALE, GRAYSCALE.length);
         } else if (invert.isChecked()) {
@@ -623,30 +626,37 @@ public class Filters extends AppCompatActivity {
         }
         imgAfter.setColorFilter(new ColorMatrixColorFilter(filter));
         updateMatrix();
-    }
-    public void onClickBottom(View view) {
-        def.setChecked(false);
-        gray.setChecked(false);
-        invert.setChecked(false);
-        custom.setChecked(false);
-        if (protan.isChecked()) {
-            currentFilter = Arrays.copyOf(PROTANOPIA, PROTANOPIA.length);
-        } else if (deuteran.isChecked()) {
-            currentFilter = Arrays.copyOf(DEUTERANOPIA, DEUTERANOPIA.length);
-        } else if (tritan.isChecked()) {
-            currentFilter = Arrays.copyOf(TRITANOPIA, TRITANOPIA.length);
-        } else {
-            currentFilter = Arrays.copyOf(defaultFilter, defaultFilter.length);
-        }
-        currentFilter[18] = (float) alpha_slider.getProgress();
-        float[] filter = new float[currentFilter.length];
 
-        for (int i = 0; i < currentFilter.length; i++) {
-            filter[i] = currentFilter[i] / 255;
-        }
-        imgAfter.setColorFilter(new ColorMatrixColorFilter(filter));
-        updateMatrix();
+        mSharedMemory.setAlpha(alpha_slider.getProgress());
+        mSharedMemory.setRed(RtoRVal);
+        mSharedMemory.setGreen(GtoGVal);
+        mSharedMemory.setBlue(BtoBVal);
     }
+//    public void onClickBottom(View view) {
+//        def.setChecked(false);
+//        gray.setChecked(false);
+//        invert.setChecked(false);
+//        custom.setChecked(false);
+//
+//        if (protan.isChecked()) {
+//            currentFilter = Arrays.copyOf(PROTANOPIA, PROTANOPIA.length);
+//        } else if (deuteran.isChecked()) {
+//            currentFilter = Arrays.copyOf(DEUTERANOPIA, DEUTERANOPIA.length);
+//        } else if (tritan.isChecked()) {
+//            currentFilter = Arrays.copyOf(TRITANOPIA, TRITANOPIA.length);
+//        } else {
+//            currentFilter = Arrays.copyOf(defaultFilter, defaultFilter.length);
+//        }
+//
+//        currentFilter[18] = (float) alpha_slider.getProgress();
+//        float[] filter = new float[currentFilter.length];
+//
+//        for (int i = 0; i < currentFilter.length; i++) {
+//            filter[i] = currentFilter[i] / 255;
+//        }
+//        imgAfter.setColorFilter(new ColorMatrixColorFilter(filter));
+//        updateMatrix();
+//    }
     public void updateMatrix() {
         EditText RtoR = findViewById(R.id.RtoR);
         EditText RtoG = findViewById(R.id.RtoG);
