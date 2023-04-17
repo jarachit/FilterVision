@@ -541,10 +541,11 @@ public class Filters extends AppCompatActivity {
     public void saveFilter(View view) {
         Intent intent = new Intent(Filters.this, Presets.class);
         startActivity(intent);
-        String str = "Saved Matrix\n\n";
+        String num = String.valueOf(Presets.presetList.size() + 1);
+        String str = "Saved Matrix #" + num + "\n\n";
         for (int j = 0; j < 3; j++) {
             for(int i= (j * 3);i< (j*3) + 3;i++){
-                str = str + "   " + String.valueOf((int)currentFilter[i]);
+                str = str + "     " + String.valueOf((int)currentFilter[i]);
             }
             str = str + "\n";
         }
