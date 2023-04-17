@@ -30,13 +30,21 @@ import android.content.SharedPreferences;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
 import java.util.Vector;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.AppCompatSeekBar;
 public class Filters extends AppCompatActivity {
     private SharedMemory mSharedMemory;
+
+    SharedPreferences sp;
     private ToggleButton mToggleButton;
 
     private static final float[] INVERTED = {
@@ -103,7 +111,7 @@ public class Filters extends AppCompatActivity {
             0, 0, 0, 255, 0,
     };
 
-    private float[] currentFilter = {
+    public float[] currentFilter = {
             255, 0, 0, 0, 0,
             0, 255, 0, 0, 0,
             0, 0, 255, 0, 0,
@@ -530,6 +538,37 @@ public class Filters extends AppCompatActivity {
         });
     }
 
+    public void saveFilter(View view) {
+        Intent intent = new Intent(Filters.this, Presets.class);
+        startActivity(intent);
+        String str = "Saved Matrix\n\n";
+        for (int j = 0; j < 3; j++) {
+            for(int i= (j * 3);i< (j*3) + 3;i++){
+                str = str + "   " + String.valueOf((int)currentFilter[i]);
+            }
+            str = str + "\n";
+        }
+        str = str + "A:  " + alphaVal;
+//        editor.putString("FLOAT_ARR",str);
+//        editor.commit();
+        PresetModel presetModel = new PresetModel(str, getDate());
+        Presets.presetList.add(presetModel);
+        PrefConfig.writeListInPref(getApplicationContext(), Presets.presetList);
+        Collections.reverse(Presets.presetList);
+        Presets.adapter.setTaskModelList(Presets.presetList);
+    }
+
+
+    private String getDate() {
+//        Calendar cal = Calendar.getInstance();
+//        Date date = new Date();
+//        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//        return String.valueOf(dateFormat.format(date));
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        return String.valueOf(sdf3.format(timestamp));
+    }
     public void applyFilter(View view) {
         boolean invertedFilt = true;
         for (int i = 0; i < currentFilter.length; i++) {

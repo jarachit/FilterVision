@@ -5,6 +5,7 @@
     <string name="image_content_description">Image</string>
     <string name="palm_tree_content_description">Palm Tree</string>
     <string name="apply_filter">Apply Filter</string>
+    <string name="save_filter">Save Filter</string>
     <string name="default_filters">Default Filters</string>
     <string name="custom_filters">Custom Filters</string>
     <string name="custom_switch1">Purple</string>

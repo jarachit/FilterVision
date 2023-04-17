@@ -60,6 +60,7 @@ public class ScreenFilterService extends Service {
         WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         assert windowManager != null;
         windowManager.addView(mView, layoutParams);
+//        windowManager.getCurrentWindowMetrics().
         STATE = STATE_ACTIVE;
 
     }
