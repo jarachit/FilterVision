@@ -543,7 +543,6 @@ public class Filters extends AppCompatActivity {
         startActivity(intent);
         String num = String.valueOf(Presets.presetList.size() + 1);
         String str = "Saved Matrix #" + num + "\n\n";
-//        for (int j = 0; j < 3; j++) {
         for(int i= 0; i < 3; i++){
             str = str + "     " + String.valueOf((int)currentFilter[i]);
         }
@@ -556,10 +555,9 @@ public class Filters extends AppCompatActivity {
             str = str + "     " + String.valueOf((int)currentFilter[i]);
         }
         str = str + "\n";
-//        }
+
         str = str + "A:  " + alphaVal;
-//        editor.putString("FLOAT_ARR",str);
-//        editor.commit();
+
         PresetModel presetModel = new PresetModel(str, getDate());
         Presets.presetList.add(presetModel);
         PrefConfig.writeListInPref(getApplicationContext(), Presets.presetList);
