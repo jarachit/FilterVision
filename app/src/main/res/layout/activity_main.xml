@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Description"
+                    android:text="Learn how to use FilterVision"
                     android:padding="5dp"
                     android:textColor="@android:color/darker_gray"/>
 
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:text="Choose your filters"
+                    android:text="Change the color of your screen"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
