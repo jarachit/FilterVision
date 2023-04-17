@@ -28,7 +28,7 @@ public class Tutorial extends AppCompatActivity {
             selectedFragment = new TutorialOverview();
         } else if (itemId == R.id.filters) {
             selectedFragment = new TutorialFilters();
-        } else if (itemId == R.id.test) {
+        } else if (itemId == R.id.presets) {
             selectedFragment = new TutorialPresets();
         }
         // It will help to replace the
