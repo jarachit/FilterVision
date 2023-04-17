@@ -627,10 +627,10 @@ public class Filters extends AppCompatActivity {
         imgAfter.setColorFilter(new ColorMatrixColorFilter(filter));
         updateMatrix();
 
-        mSharedMemory.setAlpha(alpha_slider.getProgress());
-        mSharedMemory.setRed(RtoRVal);
-        mSharedMemory.setGreen(GtoGVal);
-        mSharedMemory.setBlue(BtoBVal);
+//        mSharedMemory.setAlpha(alpha_slider.getProgress());
+//        mSharedMemory.setRed(RtoRVal);
+//        mSharedMemory.setGreen(GtoGVal);
+//        mSharedMemory.setBlue(BtoBVal);
     }
 //    public void onClickBottom(View view) {
 //        def.setChecked(false);
