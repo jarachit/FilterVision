@@ -2,28 +2,44 @@
 
 FilterVision is an Android application that allows the user to change the color of their screen.
 
+## Credit
+
+I completed this project with four other students as part of EECS 495: Software for Accessibility at the University of Michigan in Spring 2023; this repository is cloned from the one we shared on UM GitLab. My teammates were:
+
+Matt Doucette | mdouce@umich.edu
+
+Kevin Han | khhan@umich.edu
+
+Marc Mills | mhmills@umich.edu
+
+Javid Rzayev | rzayevj@umich.edu
+
 ## Installation
 Open the app-release.apk file and download it on your Android phone (On an Apple phone, you will need to download an application that opens .apk files). If your phone requests permission from system settings, allow them, and continue to download the file.
 **(If you wish to open this on a laptop using Android Studio, see "Alternate Options".)**
 
-![Screenshot_20230215_125515_Package_installer](/uploads/a16b22698696700e57ee5636149ab7b9/Screenshot_20230215_125515_Package_installer.jpg)
+![image](https://github.com/mhmills/FilterVision/assets/59720306/e71ac727-7630-49a5-b429-ef61efccf44c)
 
-![Screenshot_20230215_125525_Settings](/uploads/18fccb698dc985538ba3526d80fb108b/Screenshot_20230215_125525_Settings.jpg)
+![image](https://github.com/mhmills/FilterVision/assets/59720306/1cf4b61f-e702-498e-9ae0-a30895f81964)
+
 
 Google Play will ask if you want to continue opening the app. Select "install anyway".
 
-![Screenshot_20230215_125601_Google_Play_Store](/uploads/52d8556744af94ec84c57751d8e86f62/Screenshot_20230215_125601_Google_Play_Store.jpg)
+![image](https://github.com/mhmills/FilterVision/assets/59720306/de5ea146-c2b4-4c29-9e95-2e77294075f9)
+
 
 Upon installation, open the file, and the app should open.
 
 ## Alternate Options
 Install the latest version of the Android Studio IDE here: https://developer.android.com/studio
 
-Once inside Android Studio, select the "Get from VCS" option listed. ![image](/uploads/9e1fe9907c79a024f70eb05eede050c2/image.png)
+Once inside Android Studio, select the "Get from VCS" option listed. ![image](https://github.com/mhmills/FilterVision/assets/59720306/7a0c8355-ac6c-4860-8d6f-cda6d7df203b)
+
 
 Paste the URL of this repository in your directory of choice.
 
-![image](/uploads/ff0d15e006fd28e789ad9f84a0026417/image.png)
+![image](https://github.com/mhmills/FilterVision/assets/59720306/534662aa-a041-4ced-9db8-42a19f13999c)
+
 
 The project should now open.
 
@@ -31,17 +47,21 @@ The project should now open.
 
 Upon opening the project, select device manager in the top right corner of the screen.
 
-![Screenshot__72_](/uploads/b2d9db5020c0d8e910a9051d5deb4e3c/Screenshot__72_.png)
+![image](https://github.com/mhmills/FilterVision/assets/59720306/f08a949e-c2dd-41bd-a09b-62615a728222)
+
 
 Select "Create a Device".
 
-![image](/uploads/1a7e06b34838f0a13896f2c66361e741/image.png)
+![image](https://github.com/mhmills/FilterVision/assets/59720306/faf1e0c4-9029-4011-b6b3-eab89786db69)
+
 
 Choose a model and system OS. We recommend using the Pixel 2 on the Nougat OS (API 25).
 
-![image](/uploads/e24d19bf07a220a804efbacfd5aa21ff/image.png)
-![image](/uploads/b02ad7f83a89eb4f06a865b5fab0ba98/image.png)
+![image](https://github.com/mhmills/FilterVision/assets/59720306/a3d5269c-8be5-4159-a89f-9cf75b6d26d8)
+
+![image](https://github.com/mhmills/FilterVision/assets/59720306/777ac714-ca95-4850-bb80-9dc283449e4c)
+
 
 Finally, return to the project page. On the top right, select a device, then run the project.
 
-![image](/uploads/d201490bb8cd9f473eeb92c507458504/image.png)
+![image](https://github.com/mhmills/FilterVision/assets/59720306/ee94030b-4675-4860-bacc-ec4ae35dc5a6)
