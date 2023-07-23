@@ -1,6 +1,6 @@
 # FilterVision
 
-FilterVision is an Android application that allows the user to change the color of their screen.
+FilterVision is an Android app geared towards 300 million+ with color blindness that increases color filter customizability and streamlines complicated functionalities.
 
 ## Credit
 
